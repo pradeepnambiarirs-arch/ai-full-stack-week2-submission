@@ -1,0 +1,11 @@
+# Additional input fixtures
+
+These are source inputs for the cases in `planning/plan.md`, not measured extraction results or model-response mocks. `manifest.json` lists their source, exact mutation, intended input filename, source-byte hash and independently specified expected facts/routes.
+
+Use the original 20 exports in `materials/requests/` for unchanged cases. The root variants cover changed metadata, a 200-word message, whitespace-only bytes, a follow-up document, production source replacement, the authored IT-021 paraphrase, unresolved kind and a purpose correction. `t22/` contains all 22 missing-fact cases (11 each for new/change), plus three withdrawal precedence/eligibility cases. `duplicates/` contains two same-basename feeds. `invalid/` includes deliberately malformed inputs and a readable seed for a future read-failure simulation. `workload/` contains 2,000 actual same-format exports; the first 400 form the smaller workload batch.
+
+Stage each variant in an isolated temporary directory under its manifest `document_id_when_staged`, preserving its original bytes. For example, `IT-001.production.json` must be copied as `IT-001.json`, while `IT-001-followup.json` intentionally keeps its own filename. Ingesting the descriptive filenames directly would introduce unintended identifier-mismatch issues. Select only fixture paths from the manifest: README and manifest are not intake exports, and `invalid/` intentionally includes nonconforming files.
+
+The duplicate-basename pair is expected to cause a collision when supplied together; its separate per-file facts do not authorize overwriting. The unreadable seed is kept readable for checkout and review: simulate PermissionError on a temporary copy in the future test, rather than storing an unreliable permission-dependent repository file.
+
+Expected facts come from the plan and source policy, without calling any model or application. Workload expectations reuse O01 with each explicit new request ID. The manifest is input-fixture documentation, not the planned accuracy corpus at `tests/expected/source-facts.json`. Provider response/error fixtures are not created here. Impossible calendar dates remain open for policy clarification.
