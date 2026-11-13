@@ -31,7 +31,7 @@ def provider_factory():
 def parser():
     main=argparse.ArgumentParser(description='Prepare access requests for human review')
     commands=main.add_subparsers(dest='command',required=True)
-    for name in ('intake','resume','queue','show','history','retry','refresh','export','accuracy'):
+    for name in ('intake','resume','queue','show','history','retry','refresh','export','accuracy','verify'):
         command=commands.add_parser(name);command.add_argument('--db',default='var/intake.sqlite')
         if name in ('intake','resume','retry','refresh','export','accuracy'):
             command.add_argument('--workers',type=int,default=None);command.add_argument('--rpm',type=float,default=None)
@@ -46,6 +46,9 @@ def parser():
         if name=='export':command.add_argument('--out',default='deliverables')
         if name=='accuracy':
             command.add_argument('--actual',required=True);command.add_argument('--expected',required=True);command.add_argument('--out',required=True)
+        if name=='verify':
+            command.add_argument('--out',default='deliverables/verification.md')
+            command.add_argument('--expected',default=str(ROOT/'tests/expected/source-facts.json'))
         if name=='refresh':command.add_argument('--force',action='store_true');command.add_argument('--document-id')
     return main
 
@@ -74,6 +77,10 @@ def run(args):
         records=[json.loads(line) for line in Path(args.actual).read_text().splitlines()]
         emit(write_accuracy(records,args.expected,args.out));return 0
     store=Store(args.db)
+    if args.command=='verify':
+        from access_intake.verification import write_verification
+        result=write_verification(store,args.out,expected_path=args.expected)
+        emit(result);return 0 if result['passed'] else 1
     if args.command=='export':
         from access_intake.artifacts import export_current
         emit(export_current(store,args.out));return 0

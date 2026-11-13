@@ -1,0 +1,108 @@
+Implementation validation — observed evidence, not proposed application results
+UTC: 2026-11-13T17:02:00.960260+00:00
+Working directory: /home/user/ai-full-stack-week2-submission
+Python: 3.12.3
+Runner launched with: env -u API_KEY python3 (audit orchestration only; no test code created)
+Credential policy: API_KEY removed before the runner and all child processes; no credential value inspected or printed.
+No application or tests have been changed. Existing test source inspected before execution: tests/test_starter.py.
+
+$ git rev-parse HEAD
+00764411dccf286fea17aa329a79a5ad77213704
+EXIT STATUS: 0
+
+$ git ls-files
+.agents/skills/plan-from-spec/SKILL.md
+.claude/settings.json
+.codex/hooks.json
+.entire/.gitignore
+.entire/settings.json
+.gitignore
+CHALLENGE.md
+README.md
+docs/00-prerequisites.md
+docs/01-research-to-spec.md
+docs/02-plan-with-test-plan.md
+docs/03-implement-and-validate.md
+docs/requirements.md
+materials/office-policy.md
+materials/requests/IT-001.json
+materials/requests/IT-002.json
+materials/requests/IT-003.json
+materials/requests/IT-004.json
+materials/requests/IT-005.json
+materials/requests/IT-006.json
+materials/requests/IT-007.json
+materials/requests/IT-008.json
+materials/requests/IT-009.json
+materials/requests/IT-010.json
+materials/requests/IT-011.json
+materials/requests/IT-012.json
+materials/requests/IT-013.json
+materials/requests/IT-014.json
+materials/requests/IT-015.json
+materials/requests/IT-016.json
+materials/requests/IT-017.json
+materials/requests/IT-018.json
+materials/requests/IT-019.json
+materials/requests/IT-020.json
+planning/plan.md
+planning/spec.md
+snapshot.schema.json
+tests/mock_responses/canned-reply.json
+tests/test_starter.py
+tools/check_prerequisites.py
+EXIT STATUS: 0
+
+Filesystem inventory (existence checks; no application behavior inferred):
+MISSING access_intake
+MISSING src/access_intake
+MISSING requirements.lock
+MISSING pyproject.toml
+MISSING requirements.txt
+MISSING setup.py
+MISSING tests/expected/source-facts.json
+MISSING tests/inputs/IT-021.json
+MISSING deliverables/extractions.jsonl
+MISSING deliverables/queue.json
+MISSING deliverables/accuracy.md
+MISSING deliverables/request-evidence.json
+MISSING deliverables/verification.md
+Existing Python test files: tests/test_starter.py
+Saved mock response files: tests/mock_responses/canned-reply.json
+Planned T01–T49 test implementations are absent; the starter tests are not equivalents.
+
+FULL EXISTING TEST SUITE (API_KEY unset; no real model calls in inspected test code)
+$ python3 -m unittest discover -s tests -v
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+EXIT STATUS: 0
+
+APPLICATION ENTRY-POINT PROBE (no provider selected, no model call; planned module checked with --help)
+$ python3 -m access_intake --help
+/usr/bin/python3: No module named access_intake
+EXIT STATUS: 1
+
+STOP: application entry point failed; remaining application verification commands are blocked, not passed.
+NOT RUN: intake, queue/watch, show, resume, retry, history, refresh, export, accuracy, verify, provider integration and clean install.
+Reasons: application module and dependency lockfile absent; no processing outputs or required mock fixtures/oracles.
+
+Stepwise test-first history: no S01–S12 implementation steps performed in this review; no per-step success/failure history can be claimed.
+
+STATIC REVIEW FINDINGS (inspection only, after runtime verification stopped)
+Inspected tests/test_starter.py:28: loads 20 JSON messages and checks SHA-256 hexadecimal length; it does not call an application or store hashes.
+Inspected tests/test_starter.py:36: asserts request_id is in the supplied schema required list; it does not validate an extraction.
+Inspected tests/test_starter.py:42: loads tests/mock_responses/canned-reply.json, asserts mock origin and nonempty output_text, and patches socket.socket to reject calls.
+Inspected tests/test_starter.py:44–45: copies/restores the already-sanitized environment and removes API_KEY; no credential value is obtained for a model call.
+The two SuppliedFiles tests do not load any mock response. Thus the literal condition that every test uses a saved mock response is not satisfied.
+No application fact expectations are asserted by executable tests; plan O01–O21 exists only in Markdown, and the named expected-facts file and extraction mocks are absent.
+No extraction outputs exist from which to establish or suspect copied measured values; the plan-based test-oracle requirement is not demonstrated.
+README.md:3 remains the starter placeholder.
+.entire/settings.json:2 enables capture and .codex/hooks.json configures hooks; neither demonstrates pairing to a final application submission.
+The reviewed commit is a plan commit; no S01–S12 application implementation or per-step full-suite history is shown by the inspected files/log.
+No tests, application source, fixtures, specification or plan were edited during this review.

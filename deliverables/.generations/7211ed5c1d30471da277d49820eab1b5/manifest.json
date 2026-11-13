@@ -1,0 +1,10 @@
+{
+  "generation": "7211ed5c1d30471da277d49820eab1b5",
+  "documents": 21,
+  "files": {
+    "extractions.jsonl": "5a3d22c6c4df7ea728677d68fdb7780d6aa8cee46ab41ce97525c565f3051946",
+    "queue.json": "87cefb855f732c84d2dc6bde12588d8c9c37950a17f57f8119d7b8126c1478fe",
+    "request-evidence.json": "ff20f5006f5c165dda782abb8c75c60b3e26ff90378dce734a0660e0f0200bf9"
+  },
+  "publication": "static database snapshot; CURRENT selects a complete generation; flat files require manifest verification"
+}

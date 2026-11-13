@@ -1,0 +1,128 @@
+Actual local observations: saved mock replies, model fixture-v1; no live calls.
+
+COMMAND: env -u API_KEY /home/user/ai-full-stack-week2-submission/.venv/bin/python -m access_intake intake materials/requests tests/inputs/IT-021.json --db var/intake.sqlite --config config.mock.json
+{
+  "documents": 21,
+  "errors": 0,
+  "pending": 0
+}
+
+EXIT STATUS: 0
+
+COMMAND: env -u API_KEY /home/user/ai-full-stack-week2-submission/.venv/bin/python -m access_intake export --db var/intake.sqlite --out deliverables
+{
+  "generation": "7211ed5c1d30471da277d49820eab1b5",
+  "documents": 21,
+  "files": {
+    "extractions.jsonl": "5a3d22c6c4df7ea728677d68fdb7780d6aa8cee46ab41ce97525c565f3051946",
+    "queue.json": "87cefb855f732c84d2dc6bde12588d8c9c37950a17f57f8119d7b8126c1478fe",
+    "request-evidence.json": "ff20f5006f5c165dda782abb8c75c60b3e26ff90378dce734a0660e0f0200bf9"
+  },
+  "publication": "static database snapshot; CURRENT selects a complete generation; flat files require manifest verification"
+}
+
+EXIT STATUS: 0
+
+COMMAND: env -u API_KEY /home/user/ai-full-stack-week2-submission/.venv/bin/python -m access_intake accuracy --actual deliverables/extractions.jsonl --expected tests/expected/source-facts.json --out deliverables/accuracy.md
+{
+  "matches": 252,
+  "denominator": 252,
+  "whole_record_matches": 21,
+  "route_matches": 21,
+  "documents": 21,
+  "factual_errors": [],
+  "manual_review": [],
+  "route_errors": [],
+  "integrity_errors": [],
+  "missing_documents": [],
+  "extraction_errors": [],
+  "field_matches": {
+    "request_id": 21,
+    "request_date": 21,
+    "kind": 21,
+    "requester": 21,
+    "team": 21,
+    "system": 21,
+    "environment": 21,
+    "permission": 21,
+    "business_purpose": 21,
+    "start_date": 21,
+    "end_date": 21,
+    "manager": 21
+  },
+  "origins": [
+    "mock"
+  ]
+}
+
+EXIT STATUS: 0
+
+COMMAND: env -u API_KEY /home/user/ai-full-stack-week2-submission/.venv/bin/python -m access_intake verify --db var/intake.sqlite --out deliverables/verification.md
+{
+  "passed": true,
+  "checks": [
+    {
+      "assertion": "export publication",
+      "comparison": "Manifest hashes match files; queue and extraction rows agree without duplicate identities.",
+      "passed": true
+    },
+    {
+      "assertion": "current database snapshot",
+      "comparison": "Exactly the database current rows, with no pending desired source revisions.",
+      "passed": true
+    },
+    {
+      "assertion": "envelope, schema and saved source provenance",
+      "comparison": "Required envelope fields; original-byte hashes; schema-valid successes or actionable null-extraction failures; producing settings/policy retained.",
+      "passed": true
+    },
+    {
+      "assertion": "independent source expectations",
+      "comparison": "Exactly the independently authored source cases; all 12 scalar facts and routes match, with quote/issue/hash integrity and no unreviewed discrepancies.",
+      "passed": true
+    },
+    {
+      "assertion": "redacted request evidence",
+      "comparison": "Implemented adapter capture shows a model/configuration, redacted authorization and response handling; capture-only is distinct from a response.",
+      "passed": true
+    }
+  ],
+  "comparison": {
+    "matches": 252,
+    "denominator": 252,
+    "whole_record_matches": 21,
+    "route_matches": 21,
+    "documents": 21,
+    "factual_errors": [],
+    "manual_review": [],
+    "route_errors": [],
+    "integrity_errors": [],
+    "missing_documents": [],
+    "extraction_errors": [],
+    "field_matches": {
+      "request_id": 21,
+      "request_date": 21,
+      "kind": 21,
+      "requester": 21,
+      "team": 21,
+      "system": 21,
+      "environment": 21,
+      "permission": 21,
+      "business_purpose": 21,
+      "start_date": 21,
+      "end_date": 21,
+      "manager": 21
+    },
+    "origins": [
+      "mock"
+    ]
+  },
+  "external_pending": [
+    "R-121",
+    "R-122",
+    "R-123"
+  ],
+  "simulated_events": []
+}
+
+EXIT STATUS: 0

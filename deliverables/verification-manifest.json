@@ -1,0 +1,15 @@
+{
+  "files": {
+    "extractions.jsonl": "5a3d22c6c4df7ea728677d68fdb7780d6aa8cee46ab41ce97525c565f3051946",
+    "queue.json": "87cefb855f732c84d2dc6bde12588d8c9c37950a17f57f8119d7b8126c1478fe",
+    "accuracy.md": "fe4cc6bc7d4c908d4c90812b0ab23aeeb43269914d852483cd65b0cb37ae3a2d",
+    "request-evidence.json": "ff20f5006f5c165dda782abb8c75c60b3e26ff90378dce734a0660e0f0200bf9",
+    "verification.md": "bdfbf04645bf8914473a9517cd26cd4330fa18a4511dd77d7996d9007798dd2a"
+  },
+  "local_checks_passed": true,
+  "external_pending": [
+    "R-121",
+    "R-122",
+    "R-123"
+  ]
+}
