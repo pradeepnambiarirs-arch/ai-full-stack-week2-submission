@@ -98,3 +98,46 @@ class Store:
     def history(self,document_id):
         with self.connection() as db:
             return [self._record(row) for row in db.execute('SELECT r.*,a.id AS attempt_id,a.result FROM attempts a JOIN revisions r ON r.id=a.revision WHERE r.document_id=? ORDER BY a.id',(document_id,))]
+    def revision(self,revision):
+        with self.connection() as db:
+            row=db.execute('SELECT * FROM revisions WHERE id=?',(revision,)).fetchone()
+            if row is None:raise ValueError('unknown source revision')
+            value=dict(row);value['configuration']=json.loads(value['configuration']);value['policy']=json.loads(value['policy']);return value
+    def pending(self):
+        with self.connection() as db:
+            return [dict(row) for row in db.execute("SELECT j.* FROM jobs j JOIN documents d ON d.desired=j.revision WHERE j.state IN ('queued','running')")]
+    def claim(self,worker,*,lease_seconds=120,max_inflight=4,rpm=0):
+        if lease_seconds<=0 or max_inflight<1 or rpm<0:raise ValueError('invalid worker limits')
+        now=self.clock()
+        with self.connection(True) as db:
+            if db.execute("SELECT count(*) FROM jobs WHERE state='running'").fetchone()[0]>=max_inflight:return None
+            candidates=db.execute("SELECT r.*,j.token FROM jobs j JOIN revisions r ON r.id=j.revision JOIN documents d ON d.desired=r.id WHERE j.state='queued' ORDER BY r.id").fetchall()
+            for row in candidates:
+                settings=json.loads(row['configuration']);provider=settings.get('provider','mock')
+                names=('next_start:'+provider,'cooldown:'+provider)
+                blocked=max([r[0] for r in db.execute('SELECT value FROM limits WHERE name IN (?,?)',names)]+[0])
+                if blocked>now:continue
+                token=row['token']+1
+                db.execute("UPDATE jobs SET state='running',worker=?,token=?,lease_until=? WHERE revision=?",(worker,token,now+lease_seconds,row['id']))
+                if rpm:db.execute('INSERT INTO limits(name,value) VALUES(?,?) ON CONFLICT(name) DO UPDATE SET value=excluded.value',(names[0],now+60/rpm))
+                self._event(db,row['document_id'],row['id'],'claimed')
+                value=dict(row);value.update(token=token,configuration=settings,policy=json.loads(row['policy']));return value
+            return None
+    def renew(self,revision,token,lease_seconds=120):
+        with self.connection(True) as db:
+            return db.execute("UPDATE jobs SET lease_until=? WHERE revision=? AND token=? AND state='running'",(self.clock()+lease_seconds,revision,token)).rowcount==1
+    def cooldown(self,provider,seconds):
+        with self.connection(True) as db:
+            db.execute('INSERT INTO limits(name,value) VALUES(?,?) ON CONFLICT(name) DO UPDATE SET value=max(value,excluded.value)',('cooldown:'+provider,self.clock()+max(0,seconds)))
+    def recover(self):
+        with self.connection(True) as db:
+            rows=db.execute("SELECT r.*,j.token,d.desired FROM jobs j JOIN revisions r ON r.id=j.revision JOIN documents d ON d.document_id=r.document_id WHERE j.state='running' AND j.lease_until<=?",(self.clock(),)).fetchall()
+            for row in rows:
+                settings=json.loads(row['configuration']);provider=settings.get('provider','mock')
+                result=dict(document_id=row['document_id'],source_sha256=row['source_sha256'],response_source='mock' if provider=='mock' else provider+'/'+settings.get('model','unknown'),extraction=None,status='error',owner='IT Service Desk',next_action='retry-extraction',error='interrupted worker lease expired; resume or retry extraction')
+                attempt=db.execute('INSERT INTO attempts(revision,token,result,created) VALUES(?,?,?,?)',(row['id'],row['token'],encoded(result),self.clock())).lastrowid
+                desired=row['id']==row['desired']
+                if desired:db.execute('UPDATE documents SET current_attempt=? WHERE document_id=?',(attempt,row['document_id']))
+                db.execute('UPDATE jobs SET state=?,token=token+1,worker=NULL,lease_until=NULL WHERE revision=?',('queued' if desired else 'superseded',row['id']))
+                self._event(db,row['document_id'],row['id'],'interrupted')
+            return len(rows)
