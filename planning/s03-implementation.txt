@@ -1,0 +1,51 @@
+S03 — response and schema validation implementation; full existing suite
+UTC: 2026-11-13T18:25:44.992005+00:00
+Tests-first commit: 7e7aadb766bb1f549373c8d664c1ef241e16a249
+Invocation: env -u API_KEY .venv/bin/python -m unittest discover -s tests -v
+Python: 3.12.3; jsonschema: 4.26.0
+Dependency setup: python3 -m venv .venv lacked ensurepip in this environment; uv installed requirements.txt into the project-local .venv after approved network access.
+Reproduce dependency installation: uv --no-cache pip install --python .venv/bin/python -r requirements.txt
+Installed dependencies: attrs==26.1.0, jsonschema==4.26.0, jsonschema-specifications==2025.9.1, referencing==0.37.0, rpds-py==2026.9.1, typing-extensions==4.16.0
+Fixtures: tests/mock_responses/schema-invalid.json (81 cases), schema-valid.json (27 shape-only cases), evidence/date/refusal/interrupted/envelope fixtures and source-oracles/.
+Independent expectations: tests/expected/source-facts.json and validation-cases.json. Tests, fixtures and expected facts unchanged from the tests-first commit.
+Scope: S03 only. Business routing and semantic conflict/missing-fact processing remain S04; impossible calendar-date policy remains unresolved.
+Tests use saved fixtures with the offline guard; no model calls or environment credential reads. Dependency installation is setup, not a network call by a test.
+
+test_t02_invalid_export_shape_is_rejected_before_provider_use (test_ingest.SourceIngestionS02.test_t02_invalid_export_shape_is_rejected_before_provider_use) ... ok
+test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames (test_ingest.SourceIngestionS02.test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames) ... ok
+test_t02_same_request_id_in_two_filenames_stays_two_documents (test_ingest.SourceIngestionS02.test_t02_same_request_id_in_two_filenames_stays_two_documents) ... ok
+test_t02_whitespace_changes_source_hash_without_changing_message (test_ingest.SourceIngestionS02.test_t02_whitespace_changes_source_hash_without_changing_message) ... ok
+test_t03_metadata_is_retained_for_display_but_not_sent_as_facts (test_ingest.SourceIngestionS02.test_t03_metadata_is_retained_for_display_but_not_sent_as_facts) ... ok
+test_t04_two_hundred_word_message_preserves_the_final_manager_fact (test_ingest.SourceIngestionS02.test_t04_two_hundred_word_message_preserves_the_final_manager_fact) ... ok
+test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply) ... ok
+test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances) ... ok
+test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request) ... ok
+test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id) ... ok
+test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error) ... ok
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+test_t05_accepts_complete_saved_response_against_independent_O01 (test_validation.ResponseValidationS03.test_t05_accepts_complete_saved_response_against_independent_O01) ... ok
+test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors (test_validation.ResponseValidationS03.test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors) ... ok
+test_t05_malformed_json_is_an_explicit_error (test_validation.ResponseValidationS03.test_t05_malformed_json_is_an_explicit_error) ... ok
+test_t05_rejects_each_schema_violation_with_the_policy_error_envelope (test_validation.ResponseValidationS03.test_t05_rejects_each_schema_violation_with_the_policy_error_envelope) ... ok
+test_t05_shape_validator_accepts_documented_nullable_types_and_enums (test_validation.ResponseValidationS03.test_t05_shape_validator_accepts_documented_nullable_types_and_enums) ... ok
+test_t05_shape_validator_rejects_each_invalid_schema_boundary (test_validation.ResponseValidationS03.test_t05_shape_validator_rejects_each_invalid_schema_boundary) ... ok
+test_t06_cut_off_interrupted_response_is_not_accepted (test_validation.ResponseValidationS03.test_t06_cut_off_interrupted_response_is_not_accepted) ... ok
+test_t06_decoded_newline_evidence_is_preserved_exactly (test_validation.ResponseValidationS03.test_t06_decoded_newline_evidence_is_preserved_exactly) ... ok
+test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload (test_validation.ResponseValidationS03.test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload) ... ok
+test_t06_incomplete_output_message_is_error_despite_completed_envelope (test_validation.ResponseValidationS03.test_t06_incomplete_output_message_is_error_despite_completed_envelope) ... ok
+test_t06_missing_manager_remains_null_with_its_source_grounded_issue (test_validation.ResponseValidationS03.test_t06_missing_manager_remains_null_with_its_source_grounded_issue) ... ok
+test_t06_missing_or_unsuccessful_completion_metadata_is_rejected (test_validation.ResponseValidationS03.test_t06_missing_or_unsuccessful_completion_metadata_is_rejected) ... ok
+test_t06_non_YYYY_MM_DD_date_strings_are_rejected (test_validation.ResponseValidationS03.test_t06_non_YYYY_MM_DD_date_strings_are_rejected) ... ok
+test_t06_parseable_valid_JSON_cannot_override_incomplete_status (test_validation.ResponseValidationS03.test_t06_parseable_valid_JSON_cannot_override_incomplete_status) ... ok
+test_t06_quotes_must_be_exact_substrings_of_message_not_metadata (test_validation.ResponseValidationS03.test_t06_quotes_must_be_exact_substrings_of_message_not_metadata) ... ok
+test_t06_refusal_is_error_even_when_output_contains_valid_JSON (test_validation.ResponseValidationS03.test_t06_refusal_is_error_even_when_output_contains_valid_JSON) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.256s
+
+OK
+
+EXIT STATUS: 0
+STOP: S03 ready for user review and implementation commit; S04 not started.
