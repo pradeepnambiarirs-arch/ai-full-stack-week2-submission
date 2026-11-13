@@ -1,0 +1,100 @@
+"""SQLite current pointers, immutable revisions and append-only attempt outcomes."""
+from contextlib import contextmanager
+import hashlib
+import json
+from pathlib import Path
+import sqlite3
+import time
+
+ROOT=Path(__file__).resolve().parents[1]
+def encoded(value): return json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False)
+def digest(value): return hashlib.sha256(value).hexdigest()
+def public_settings(value):
+    if isinstance(value,dict):
+        if any(str(k).lower() in {'api_key','authorization','password','secret','credential','access_token'} for k in value):
+            raise ValueError('credentials must be supplied through the provider credential loader, not persisted settings')
+        for v in value.values(): public_settings(v)
+    elif isinstance(value,list):
+        for v in value: public_settings(v)
+    return value
+
+class Store:
+    def __init__(self,path,*,clock=time.time):
+        self.path=str(Path(path).resolve()); self.clock=clock
+        Path(self.path).parent.mkdir(parents=True,exist_ok=True)
+        with self.connection(begin=False) as db:
+            db.execute('PRAGMA journal_mode=WAL')
+            db.executescript('''
+            CREATE TABLE IF NOT EXISTS revisions(id INTEGER PRIMARY KEY,document_id TEXT NOT NULL,source BLOB NOT NULL,source_sha256 TEXT NOT NULL,configuration TEXT NOT NULL,policy TEXT NOT NULL,fingerprint TEXT NOT NULL,prompt_sha256 TEXT NOT NULL,schema_sha256 TEXT NOT NULL,policy_version TEXT NOT NULL,created REAL NOT NULL);
+            CREATE TABLE IF NOT EXISTS documents(document_id TEXT PRIMARY KEY,desired INTEGER NOT NULL REFERENCES revisions(id),current_attempt INTEGER);
+            CREATE TABLE IF NOT EXISTS jobs(revision INTEGER PRIMARY KEY REFERENCES revisions(id),state TEXT NOT NULL DEFAULT 'queued',token INTEGER NOT NULL DEFAULT 0,worker TEXT,lease_until REAL);
+            CREATE TABLE IF NOT EXISTS attempts(id INTEGER PRIMARY KEY,revision INTEGER NOT NULL REFERENCES revisions(id),token INTEGER,result TEXT NOT NULL,created REAL NOT NULL);
+            CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY,document_id TEXT NOT NULL,revision INTEGER NOT NULL,action TEXT NOT NULL,created REAL NOT NULL);
+            CREATE TABLE IF NOT EXISTS limits(name TEXT PRIMARY KEY,value REAL NOT NULL);
+            ''')
+    @contextmanager
+    def connection(self,write=False,begin=True):
+        db=sqlite3.connect(self.path,timeout=5,isolation_level=None)
+        db.row_factory=sqlite3.Row
+        db.execute('PRAGMA foreign_keys=ON'); db.execute('PRAGMA busy_timeout=5000'); db.execute('PRAGMA synchronous=FULL')
+        try:
+            if begin: db.execute('BEGIN IMMEDIATE' if write else 'BEGIN')
+            yield db
+            db.commit()
+        except BaseException:
+            db.rollback(); raise
+        finally: db.close()
+    def _event(self,db,doc,revision,action):
+        db.execute('INSERT INTO events(document_id,revision,action,created) VALUES(?,?,?,?)',(doc,revision,action,self.clock()))
+    def register(self,document,configuration,*,policy=None,force=False):
+        public_settings(configuration); policy=public_settings(policy or {})
+        prompt=Path(configuration.get('prompt_path',ROOT/'access_intake/prompts/extract.txt')).read_bytes()
+        schema=Path(configuration.get('schema_path',ROOT/'snapshot.schema.json')).read_bytes()
+        policy_bytes=Path(configuration.get('policy_path',ROOT/'materials/office-policy.md')).read_bytes()
+        policy_version=digest(policy_bytes+encoded(policy).encode())
+        relevant={k:v for k,v in configuration.items() if k not in {'workers','rpm','timeout','lease_seconds','busy_timeout'}}
+        assets={k:digest(Path(configuration[k]).read_bytes()) for k in ('mock_manifest',) if configuration.get(k)}
+        fingerprint=digest(encoded([document.source_sha256,relevant,assets,digest(prompt),digest(schema),policy_version]).encode())
+        with self.connection(True) as db:
+            old=db.execute('SELECT r.id,r.fingerprint FROM documents d JOIN revisions r ON r.id=d.desired WHERE d.document_id=?',(document.document_id,)).fetchone()
+            if old and old['fingerprint']==fingerprint and not force: return old['id']
+            revision=db.execute('INSERT INTO revisions(document_id,source,source_sha256,configuration,policy,fingerprint,prompt_sha256,schema_sha256,policy_version,created) VALUES(?,?,?,?,?,?,?,?,?,?)',(document.document_id,document.source_bytes,document.source_sha256,encoded(configuration),encoded(policy),fingerprint,digest(prompt),digest(schema),policy_version,self.clock())).lastrowid
+            if old: db.execute("UPDATE jobs SET state='superseded' WHERE revision=? AND state='queued'",(old['id'],))
+            db.execute('INSERT INTO documents(document_id,desired) VALUES(?,?) ON CONFLICT(document_id) DO UPDATE SET desired=excluded.desired',(document.document_id,revision))
+            db.execute('INSERT INTO jobs(revision) VALUES(?)',(revision,))
+            self._event(db,document.document_id,revision,'registered')
+            return revision
+    def record_result(self,revision,result,*,token=None,before_commit=None):
+        with self.connection(True) as db:
+            row=db.execute('SELECT r.*,j.token,j.state,d.desired FROM revisions r JOIN jobs j ON j.revision=r.id JOIN documents d ON d.document_id=r.document_id WHERE r.id=?',(revision,)).fetchone()
+            if row is None: raise ValueError('unknown source revision')
+            if result['document_id']!=row['document_id'] or result['source_sha256']!=row['source_sha256']:
+                raise ValueError('result and source revision disagree')
+            if token is not None and (token!=row['token'] or row['state']!='running'): return None
+            attempt=db.execute('INSERT INTO attempts(revision,token,result,created) VALUES(?,?,?,?)',(revision,token,encoded(result),self.clock())).lastrowid
+            if before_commit: before_commit()
+            if row['desired']==revision:
+                db.execute('UPDATE documents SET current_attempt=? WHERE document_id=?',(attempt,row['document_id']))
+            db.execute("UPDATE jobs SET state='finished',worker=NULL,lease_until=NULL WHERE revision=?",(revision,))
+            self._event(db,row['document_id'],revision,'published' if row['desired']==revision else 'superseded-result')
+            return attempt
+    def _record(self,row):
+        result=json.loads(row['result'])
+        result.update(attempt_id=row['attempt_id'],revision_id=row['id'],configuration=json.loads(row['configuration']),policy_version=row['policy_version'],prompt_sha256=row['prompt_sha256'],schema_sha256=row['schema_sha256'])
+        return result
+    def queue(self):
+        with self.connection() as db:
+            rows=db.execute('SELECT d.document_id,d.desired,d.current_attempt,j.state,r.source_sha256 FROM documents d JOIN revisions r ON r.id=d.desired JOIN jobs j ON j.revision=r.id ORDER BY d.document_id').fetchall()
+            output=[]
+            for row in rows:
+                if row['current_attempt']:
+                    value=db.execute('SELECT r.*,a.id AS attempt_id,a.result FROM attempts a JOIN revisions r ON r.id=a.revision WHERE a.id=?',(row['current_attempt'],)).fetchone()
+                    result=self._record(value)
+                    result.update(pending=row['state'] in ('queued','running'),desired_source_sha256=row['source_sha256'],previous_version=value['id']!=row['desired'])
+                else:
+                    result=dict(document_id=row['document_id'],source_sha256=row['source_sha256'],status='pending',owner=None,next_action='resume-processing',extraction=None,error=None,pending=True,previous_version=False)
+                output.append(result)
+            return output
+    def history(self,document_id):
+        with self.connection() as db:
+            return [self._record(row) for row in db.execute('SELECT r.*,a.id AS attempt_id,a.result FROM attempts a JOIN revisions r ON r.id=a.revision WHERE r.document_id=? ORDER BY a.id',(document_id,))]
