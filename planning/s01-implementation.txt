@@ -1,0 +1,24 @@
+S01 — mock provider implementation; full existing suite
+UTC: 2026-11-13T17:57:55.565429+00:00
+Tests-first commit: 6d5c2d90b1ebc2c21d9ece02203e1b0a63f26a4d
+Invocation: env -u API_KEY python3 -m unittest discover -s tests -v
+Provider data: tests/mock_responses/manifest.json and IT-001.complete.json; no live calls or credential reads.
+Independent expectations: tests/expected/source-facts.json / O01. Tests and expectations unchanged from the tests-first commit.
+Scope: S01 only; no source ingestion, routing, persistence, real-provider integration or CLI claimed.
+
+test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply) ... ok
+test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances) ... ok
+test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request) ... ok
+test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id) ... ok
+test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error) ... ok
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.016s
+
+OK
+
+EXIT STATUS: 0
+STOP: S01 ready for user review and implementation commit; S02 not started.
