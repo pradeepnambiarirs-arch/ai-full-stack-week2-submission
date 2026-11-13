@@ -1,0 +1,79 @@
+S02 / T02–T04 — tests-first run; ingestion implementation intentionally absent
+UTC: 2026-11-13T18:04:21.601622+00:00
+Base commit: 0984ab3619f5820394b151dfcb45fc6206d14681
+Invocation: env -u API_KEY python3 -m unittest discover -s tests -v
+Mock data: tests/mock_responses/s02-manifest.json, source-oracles/IT-001.json through IT-020.json, and IT-001.200-words.json.
+Independent expectations: tests/expected/source-facts.json O01–O20, transcribed from planning/plan.md and original messages/policy before creating replies; no application output used.
+All tests use the offline saved-fixture harness. No test reads a credential or invokes a real model/network.
+Scope: S02 test preparation only; existing application implementation unchanged.
+
+test_t02_invalid_export_shape_is_rejected_before_provider_use (test_ingest.SourceIngestionS02.test_t02_invalid_export_shape_is_rejected_before_provider_use) ... ERROR
+test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames (test_ingest.SourceIngestionS02.test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames) ... ERROR
+test_t02_same_request_id_in_two_filenames_stays_two_documents (test_ingest.SourceIngestionS02.test_t02_same_request_id_in_two_filenames_stays_two_documents) ... ERROR
+test_t02_whitespace_changes_source_hash_without_changing_message (test_ingest.SourceIngestionS02.test_t02_whitespace_changes_source_hash_without_changing_message) ... ERROR
+test_t03_metadata_is_retained_for_display_but_not_sent_as_facts (test_ingest.SourceIngestionS02.test_t03_metadata_is_retained_for_display_but_not_sent_as_facts) ... ERROR
+test_t04_two_hundred_word_message_preserves_the_final_manager_fact (test_ingest.SourceIngestionS02.test_t04_two_hundred_word_message_preserves_the_final_manager_fact) ... ERROR
+test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply) ... ok
+test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances) ... ok
+test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request) ... ok
+test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id) ... ok
+test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error) ... ok
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+
+======================================================================
+ERROR: test_t02_invalid_export_shape_is_rejected_before_provider_use (test_ingest.SourceIngestionS02.test_t02_invalid_export_shape_is_rejected_before_provider_use)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_ingest.py", line 32, in setUp
+    from access_intake.ingest import (
+ModuleNotFoundError: No module named 'access_intake.ingest'
+
+======================================================================
+ERROR: test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames (test_ingest.SourceIngestionS02.test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_ingest.py", line 32, in setUp
+    from access_intake.ingest import (
+ModuleNotFoundError: No module named 'access_intake.ingest'
+
+======================================================================
+ERROR: test_t02_same_request_id_in_two_filenames_stays_two_documents (test_ingest.SourceIngestionS02.test_t02_same_request_id_in_two_filenames_stays_two_documents)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_ingest.py", line 32, in setUp
+    from access_intake.ingest import (
+ModuleNotFoundError: No module named 'access_intake.ingest'
+
+======================================================================
+ERROR: test_t02_whitespace_changes_source_hash_without_changing_message (test_ingest.SourceIngestionS02.test_t02_whitespace_changes_source_hash_without_changing_message)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_ingest.py", line 32, in setUp
+    from access_intake.ingest import (
+ModuleNotFoundError: No module named 'access_intake.ingest'
+
+======================================================================
+ERROR: test_t03_metadata_is_retained_for_display_but_not_sent_as_facts (test_ingest.SourceIngestionS02.test_t03_metadata_is_retained_for_display_but_not_sent_as_facts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_ingest.py", line 32, in setUp
+    from access_intake.ingest import (
+ModuleNotFoundError: No module named 'access_intake.ingest'
+
+======================================================================
+ERROR: test_t04_two_hundred_word_message_preserves_the_final_manager_fact (test_ingest.SourceIngestionS02.test_t04_two_hundred_word_message_preserves_the_final_manager_fact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_ingest.py", line 32, in setUp
+    from access_intake.ingest import (
+ModuleNotFoundError: No module named 'access_intake.ingest'
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.041s
+
+FAILED (errors=6)
+
+EXIT STATUS: 1
+STOP: await user review and tests-first commit before writing access_intake.ingest; no later step attempted.
