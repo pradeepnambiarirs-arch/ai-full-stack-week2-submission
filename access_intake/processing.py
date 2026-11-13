@@ -2,6 +2,7 @@
 from copy import deepcopy
 from pathlib import Path
 import re
+from access_intake.providers.base import ProviderError
 from access_intake.ingest import build_provider_request
 from access_intake.validation import DEFAULT_SCHEMA_PATH, validate_response, validate_shape
 
@@ -51,6 +52,9 @@ def process_document(document, *, provider, configuration, schema_path=DEFAULT_S
     source = getattr(provider, 'response_source', 'mock')
     try:
         response = provider.extract(**build_provider_request(document, configuration=configuration))
+    except ProviderError as error:
+        messages={'authentication':'provider authentication failed; check the environment credential and retry extraction','rate-limit':'provider rate limited; wait for the shared cooldown and retry extraction','unavailable':'provider unavailable; retry extraction after service recovery','malformed-response':'malformed provider response; retry extraction','configuration':'invalid provider configuration; correct the HTTPS endpoint and retry extraction'}
+        return error_record(document,source,messages.get(error.code,'provider request failed; retry extraction'))
     except Exception:
         return error_record(document, source, 'provider request failed; inspect provider availability and retry extraction')
     source = getattr(provider, 'response_source', source)
