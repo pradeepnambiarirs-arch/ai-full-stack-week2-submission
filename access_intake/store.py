@@ -4,6 +4,9 @@ import hashlib
 import json
 from pathlib import Path
 import sqlite3
+import shlex
+import os
+import tempfile
 import time
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -32,6 +35,10 @@ class Store:
             CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY,document_id TEXT NOT NULL,revision INTEGER NOT NULL,action TEXT NOT NULL,created REAL NOT NULL);
             CREATE TABLE IF NOT EXISTS limits(name TEXT PRIMARY KEY,value REAL NOT NULL);
             ''')
+        with self.connection(True) as db:
+            columns={row['name'] for row in db.execute('PRAGMA table_info(revisions)')}
+            for column in ('schema_text','prompt_text','policy_text'):
+                if column not in columns:db.execute(f"ALTER TABLE revisions ADD COLUMN {column} TEXT NOT NULL DEFAULT ''")
     @contextmanager
     def connection(self,write=False,begin=True):
         db=sqlite3.connect(self.path,timeout=5,isolation_level=None)
@@ -46,7 +53,7 @@ class Store:
         finally: db.close()
     def _event(self,db,doc,revision,action):
         db.execute('INSERT INTO events(document_id,revision,action,created) VALUES(?,?,?,?)',(doc,revision,action,self.clock()))
-    def register(self,document,configuration,*,policy=None,force=False):
+    def register(self,document,configuration,*,policy=None,force=False,expected_revision=None):
         public_settings(configuration); policy=public_settings(policy or {})
         prompt=Path(configuration.get('prompt_path',ROOT/'access_intake/prompts/extract.txt')).read_bytes()
         schema=Path(configuration.get('schema_path',ROOT/'snapshot.schema.json')).read_bytes()
@@ -57,8 +64,10 @@ class Store:
         fingerprint=digest(encoded([document.source_sha256,relevant,assets,digest(prompt),digest(schema),policy_version]).encode())
         with self.connection(True) as db:
             old=db.execute('SELECT r.id,r.fingerprint FROM documents d JOIN revisions r ON r.id=d.desired WHERE d.document_id=?',(document.document_id,)).fetchone()
+            if expected_revision is not None and (old is None or old['id']!=expected_revision):raise ValueError('stale source revision; refresh the desired source instead')
             if old and old['fingerprint']==fingerprint and not force: return old['id']
             revision=db.execute('INSERT INTO revisions(document_id,source,source_sha256,configuration,policy,fingerprint,prompt_sha256,schema_sha256,policy_version,created) VALUES(?,?,?,?,?,?,?,?,?,?)',(document.document_id,document.source_bytes,document.source_sha256,encoded(configuration),encoded(policy),fingerprint,digest(prompt),digest(schema),policy_version,self.clock())).lastrowid
+            db.execute('UPDATE revisions SET schema_text=?,prompt_text=?,policy_text=? WHERE id=?',(schema.decode('utf-8'),prompt.decode('utf-8'),policy_bytes.decode('utf-8'),revision))
             if old: db.execute("UPDATE jobs SET state='superseded' WHERE revision=? AND state='queued'",(old['id'],))
             db.execute('INSERT INTO documents(document_id,desired) VALUES(?,?) ON CONFLICT(document_id) DO UPDATE SET desired=excluded.desired',(document.document_id,revision))
             db.execute('INSERT INTO jobs(revision) VALUES(?)',(revision,))
@@ -72,6 +81,9 @@ class Store:
                 raise ValueError('result and source revision disagree')
             if token is not None and (token!=row['token'] or row['state']!='running'): return None
             attempt=db.execute('INSERT INTO attempts(revision,token,result,created) VALUES(?,?,?,?)',(revision,token,encoded(result),self.clock())).lastrowid
+            if result.get('error'):
+                result=dict(result,retry_command=shlex.join(['python3','-m','access_intake','retry','--db',self.path,'--document-id',row['document_id'],'--attempt-id',str(attempt)]))
+                db.execute('UPDATE attempts SET result=? WHERE id=?',(encoded(result),attempt))
             if before_commit: before_commit()
             if row['desired']==revision:
                 db.execute('UPDATE documents SET current_attempt=? WHERE document_id=?',(attempt,row['document_id']))
@@ -141,3 +153,30 @@ class Store:
                 db.execute('UPDATE jobs SET state=?,token=token+1,worker=NULL,lease_until=NULL WHERE revision=?',('queued' if desired else 'superseded',row['id']))
                 self._event(db,row['document_id'],row['id'],'interrupted')
             return len(rows)
+    def retry(self,attempt_id,*,force=False):
+        with self.connection() as db:
+            row=db.execute('SELECT r.*,a.result,j.state,d.desired FROM attempts a JOIN revisions r ON r.id=a.revision JOIN documents d ON d.document_id=r.document_id JOIN jobs j ON j.revision=r.id WHERE a.id=?',(attempt_id,)).fetchone()
+            if row is None:raise ValueError('unknown attempt')
+            if row['id']!=row['desired']:raise ValueError('stale attempt; refresh the desired source instead')
+            if row['state'] in ('queued','running'):raise ValueError('processing is already pending')
+            if json.loads(row['result'])['error'] is None and not force:raise ValueError('successful attempt requires --force')
+            revision=dict(row)
+        from access_intake.worker import document_from_revision
+        return self.register(document_from_revision(revision),json.loads(revision['configuration']),policy=json.loads(revision['policy']),force=True,expected_revision=revision['id'])
+    def refresh(self,configuration=None,*,policy=None,document_id=None,force=False):
+        with self.connection() as db:
+            query='SELECT r.* FROM documents d JOIN revisions r ON r.id=d.desired'
+            rows=db.execute(query+(' WHERE d.document_id=?' if document_id else ''),(document_id,) if document_id else ()).fetchall()
+        from access_intake.worker import document_from_revision
+        return [self.register(document_from_revision(row),configuration if configuration is not None else json.loads(row['configuration']),policy=policy if policy is not None else json.loads(row['policy']),force=force,expected_revision=row['id']) for row in rows]
+    def schema_snapshot(self,job):
+        if not job.get('schema_text'):return job['configuration'].get('schema_path',str(ROOT/'snapshot.schema.json'))
+        folder=Path(self.path).parent/'assets';folder.mkdir(exist_ok=True)
+        path=folder/(job['schema_sha256']+'.json')
+        if path.exists():
+            if path.read_text(encoding='utf-8')!=job['schema_text']:raise ValueError('stored schema snapshot is corrupted')
+            return str(path)
+        with tempfile.NamedTemporaryFile('w',encoding='utf-8',dir=folder,delete=False) as stream:
+            temporary=stream.name;stream.write(job['schema_text']);stream.flush();os.fsync(stream.fileno())
+        os.replace(temporary,path)
+        return str(path)

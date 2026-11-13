@@ -27,8 +27,10 @@ def run_pending(store,provider_factory,*,workers=4,rpm=0,lease_seconds=120,stop_
                     if not store.renew(job['id'],job['token'],lease_seconds):return
             keeper=threading.Thread(target=heartbeat,daemon=True);keeper.start()
             try:
-                provider=provider_factory(settings)
-                result=process_document(document,provider=provider,configuration=settings,schema_path=settings.get('schema_path',DEFAULT_SCHEMA_PATH),policy=job['policy'])
+                provider_settings=dict(settings)
+                if settings.get('provider','mock')!='mock':provider_settings.update(_prompt_text=job.get('prompt_text',''),_schema_text=job.get('schema_text',''))
+                provider=provider_factory(provider_settings)
+                result=process_document(document,provider=provider,configuration=settings,schema_path=store.schema_snapshot(job),policy=job['policy'])
                 if result['error'] and getattr(provider,'retry_after',0):store.cooldown(settings.get('provider','mock'),provider.retry_after)
             except Exception:
                 source='mock' if settings.get('provider','mock')=='mock' else settings.get('provider','openai')+'/'+settings.get('model','unknown')
