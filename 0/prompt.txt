@@ -1,0 +1,126 @@
+Review the implementation against every requirement in planning/spec.md.
+Run the verification commands and save planning/test-run.txt.
+
+Prepare planning/validation.md with one row per requirement, concrete
+evidence, and a proposed met/not-met assessment for my review. 
+every test uses mock responses saved under tests/mock_responses/, and no test calls the real model or reads API_KEY
+the expected values in each test are the expected facts of the test plan, not values copied from a run
+after each step, run the whole test suite and stop if anything fails.
+
+Identify partial coverage and failures explicitly. I will inspect the evidence
+and make the final assessments.
+
+---
+
+$plan-from-spec
+
+---
+
+<send_user_message_question_reply>
+[{"answer":"Leave open for policy clarification","question":"The policy does not specify how to handle an impossible date such as 2026-02-30. Should the plan leave that case open for policy clarification, or propose treating it as an unresolved fact with clarification routing?","questionItemId":"[\"request_user_input_async\",\"call_450263d16c32467fb7134c0e0a77e5b8\",0]"}]
+</send_user_message_question_reply>
+
+---
+
+does test plan has its own row for each case?
+
+---
+
+Each row's input is a real export in materials/requests?
+
+---
+
+create those additional fixtures
+
+---
+
+commit the plan
+
+---
+
+Follow docs/03-implement-and-validate.md and planning/plan.md.
+
+Implement only the next unfinished step:
+1. Write its planned tests first.
+2. Run them and show the results.
+3. Stop so I can review and commit the tests.
+4. After I ask you to continue, implement the step and run the full suite.
+5. Stop again so I can review and commit the implementation.
+
+Use saved mock responses for tests. Tests must not read API_KEY or call
+the network. Do not derive expected values from application output.
+If a new test already passes, report that honestly.
+
+Keep secrets out of code, logs, evidence, and committed files.
+
+---
+
+review complete
+
+---
+
+commit
+
+---
+
+was planning/validation.md with one row per line of planning/spec.md created?
+
+---
+
+how many test passed and how many failed?
+
+---
+
+did you create the deliverables?
+
+---
+
+start the Application implementations
+
+---
+
+review complete
+
+---
+
+commit S01
+
+---
+
+is still don't see the deliverables
+
+---
+
+review complete
+
+---
+
+review complete
+
+---
+
+commit
+
+---
+
+start S02 implementation
+
+---
+
+review complete
+
+---
+
+commit s02
+
+---
+
+what next?
+
+---
+
+start s03
+
+---
+
+review complete and commit
