@@ -1,0 +1,27 @@
+how many open questions did you create?
+
+---
+
+show me the open questions
+
+---
+
+Write planning/plan.md only, with Choices, Steps, Test plan, and Coverage.
+Do not write application code or tests yet.
+
+Prefer a Python CLI with SQLite unless you find a concrete requirement
+that makes that unsuitable. Explain concurrency and transaction handling,
+resumable processing, incremental queue visibility, retry behavior,
+version history, and refreshes after source, model, or policy changes.
+
+Start with a mock provider, then add a configurable real provider
+integration using API_KEY.
+
+For each test case, name the input and mock response and derive expected
+facts independently from the source message and office policy.
+Map every specification requirement to an implementation step and check.
+Identify any requirements left uncovered.
+
+---
+
+commit the plan
