@@ -1,0 +1,116 @@
+test_t42_consistent_export_and_separate_history (test_artifacts.ArtifactsS10.test_t42_consistent_export_and_separate_history) ... ok
+test_t42_interrupted_flat_publication_is_detected_and_repairable (test_artifacts.ArtifactsS10.test_t42_interrupted_flat_publication_is_detected_and_repairable) ... ok
+test_t43_source_corpus_and_complete_case_scores_are_independent (test_artifacts.ArtifactsS10.test_t43_source_corpus_and_complete_case_scores_are_independent) ... ok
+test_t44_denominators_factual_errors_and_failed_null_slots (test_artifacts.ArtifactsS10.test_t44_denominators_factual_errors_and_failed_null_slots) ... ok
+test_t45_captured_request_evidence_is_redacted_and_not_live (test_artifacts.ArtifactsS10.test_t45_captured_request_evidence_is_redacted_and_not_live) ... ok
+test_t40_intake_inspection_history_resume_and_explicit_retry (test_cli.CLIS09.test_t40_intake_inspection_history_resume_and_explicit_retry) ... ok
+test_t41_duplicate_basenames_are_rejected_without_overwriting (test_cli.CLIS09.test_t41_duplicate_basenames_are_rejected_without_overwriting) ... ok
+test_t41_invalid_export_is_visible_while_valid_input_completes (test_cli.CLIS09.test_t41_invalid_export_is_visible_while_valid_input_completes) ... ok
+test_t46_400_and_2000_messages_with_two_operator_instances (test_handover.HandoverS11.test_t46_400_and_2000_messages_with_two_operator_instances) ... FAIL
+test_t47_readme_handover_names_supported_setup_and_commands (test_handover.HandoverS11.test_t47_readme_handover_names_supported_setup_and_commands) ... FAIL
+test_t48_clean_environment_installs_only_hashed_local_wheels (test_handover.HandoverS11.test_t48_clean_environment_installs_only_hashed_local_wheels) ... FAIL
+test_t02_invalid_export_shape_is_rejected_before_provider_use (test_ingest.SourceIngestionS02.test_t02_invalid_export_shape_is_rejected_before_provider_use) ... ok
+test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames (test_ingest.SourceIngestionS02.test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames) ... ok
+test_t02_same_request_id_in_two_filenames_stays_two_documents (test_ingest.SourceIngestionS02.test_t02_same_request_id_in_two_filenames_stays_two_documents) ... ok
+test_t02_whitespace_changes_source_hash_without_changing_message (test_ingest.SourceIngestionS02.test_t02_whitespace_changes_source_hash_without_changing_message) ... ok
+test_t03_metadata_is_retained_for_display_but_not_sent_as_facts (test_ingest.SourceIngestionS02.test_t03_metadata_is_retained_for_display_but_not_sent_as_facts) ... ok
+test_t04_two_hundred_word_message_preserves_the_final_manager_fact (test_ingest.SourceIngestionS02.test_t04_two_hundred_word_message_preserves_the_final_manager_fact) ... ok
+test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply) ... ok
+test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances) ... ok
+test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request) ... ok
+test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id) ... ok
+test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error) ... ok
+test_t37_configured_request_has_trusted_instructions_schema_and_source (test_openai.OpenAIS08.test_t37_configured_request_has_trusted_instructions_schema_and_source) ... ok
+test_t38_provider_failures_have_sanitized_error_records_without_hidden_retry (test_openai.OpenAIS08.test_t38_provider_failures_have_sanitized_error_records_without_hidden_retry) ... ok
+test_t38_raw_refusal_and_incomplete_metadata_cannot_become_success (test_openai.OpenAIS08.test_t38_raw_refusal_and_incomplete_metadata_cannot_become_success) ... ok
+test_t39_environment_bridge_is_inspected_not_executed (test_openai.OpenAIS08.test_t39_environment_bridge_is_inspected_not_executed) ... ok
+test_t39_request_evidence_and_failure_do_not_disclose_credential (test_openai.OpenAIS08.test_t39_request_evidence_and_failure_do_not_disclose_credential) ... ok
+test_t07_complete_request_awaits_system_owner_not_manager_approval (test_processing.ProcessingS04.test_t07_complete_request_awaits_system_owner_not_manager_approval) ... ok
+test_t07_trusted_prompt_states_extraction_contract_without_source_injection (test_processing.ProcessingS04.test_t07_trusted_prompt_states_extraction_contract_without_source_injection) ... ok
+test_t08_missing_end_date_clarifies_before_production_risk_review (test_processing.ProcessingS04.test_t08_missing_end_date_clarifies_before_production_risk_review) ... ok
+test_t09_relative_dates_remain_null_instead_of_using_export_timestamp (test_processing.ProcessingS04.test_t09_relative_dates_remain_null_instead_of_using_export_timestamp) ... ok
+test_t10_conflicting_environment_preserves_both_source_alternatives (test_processing.ProcessingS04.test_t10_conflicting_environment_preserves_both_source_alternatives) ... ok
+test_t11_conflicting_manager_is_not_arbitrarily_last_value_wins (test_processing.ProcessingS04.test_t11_conflicting_manager_is_not_arbitrarily_last_value_wins) ... ok
+test_t12_embedded_override_is_evidence_and_inspect_message_routing (test_processing.ProcessingS04.test_t12_embedded_override_is_evidence_and_inspect_message_routing) ... ok
+test_t13_withdrawal_needs_only_resolved_ID_and_date_for_confirmation (test_processing.ProcessingS04.test_t13_withdrawal_needs_only_resolved_ID_and_date_for_confirmation) ... ok
+test_t14_missing_access_details_and_manager_remain_null_with_issues (test_processing.ProcessingS04.test_t14_missing_access_details_and_manager_remain_null_with_issues) ... ok
+test_t15_change_requests_use_new_permission_not_prior_permission (test_processing.ProcessingS04.test_t15_change_requests_use_new_permission_not_prior_permission) ... ok
+test_t16_explicit_corrections_replace_environment_and_access_dates (test_processing.ProcessingS04.test_t16_explicit_corrections_replace_environment_and_access_dates) ... ok
+test_t17_filename_identity_does_not_replace_stated_request_identifier (test_processing.ProcessingS04.test_t17_filename_identity_does_not_replace_stated_request_identifier) ... ok
+test_t18_other_and_unresolved_request_kinds_route_to_clarification (test_processing.ProcessingS04.test_t18_other_and_unresolved_request_kinds_route_to_clarification) ... ok
+test_t19_reversed_interval_retains_stated_dates_and_requires_clarification (test_processing.ProcessingS04.test_t19_reversed_interval_retains_stated_dates_and_requires_clarification) ... ok
+test_t20_production_write_or_admin_each_trigger_risk_then_owner_review (test_processing.ProcessingS04.test_t20_production_write_or_admin_each_trigger_risk_then_owner_review) ... ok
+test_t21_authored_paraphrase_uses_the_same_extraction_and_routing_path (test_processing.ProcessingS04.test_t21_authored_paraphrase_uses_the_same_extraction_and_routing_path) ... ok
+test_t22_completion_validation_precedes_override_routing (test_processing.ProcessingS04.test_t22_completion_validation_precedes_override_routing) ... ok
+test_t22_each_required_fact_and_withdrawal_override_rule_precedence (test_processing.ProcessingS04.test_t22_each_required_fact_and_withdrawal_override_rule_precedence) ... ok
+test_t22_postchecks_work_even_when_model_issue_labels_are_omitted (test_processing.ProcessingS04.test_t22_postchecks_work_even_when_model_issue_labels_are_omitted) ... ok
+test_t22_schema_validation_precedes_override_routing (test_processing.ProcessingS04.test_t22_schema_validation_precedes_override_routing) ... ok
+test_t23_all_twenty_sources_and_input_variants_match_independent_expectations (test_processing.ProcessingS04.test_t23_all_twenty_sources_and_input_variants_match_independent_expectations) ... ok
+test_t30_unchanged_success_is_reused_without_provider_call (test_refresh.RefreshS07.test_t30_unchanged_success_is_reused_without_provider_call) ... ok
+test_t31_changed_source_retains_old_hash_and_result (test_refresh.RefreshS07.test_t31_changed_source_retains_old_hash_and_result) ... ok
+test_t32_model_change_refreshes_and_worker_count_does_not (test_refresh.RefreshS07.test_t32_model_change_refreshes_and_worker_count_does_not) ... ok
+test_t33_policy_change_refreshes_routing_with_version_history (test_refresh.RefreshS07.test_t33_policy_change_refreshes_routing_with_version_history) ... ok
+test_t34_failed_retry_after_success_is_current_and_old_success_is_history (test_refresh.RefreshS07.test_t34_failed_retry_after_success_is_current_and_old_success_is_history) ... ok
+test_t35_manual_retry_creates_attempt_and_rejects_stale_source (test_refresh.RefreshS07.test_t35_manual_retry_creates_attempt_and_rejects_stale_source) ... ok
+test_t35_shared_pacing_and_cooldown_use_recorded_clock (test_refresh.RefreshS07.test_t35_shared_pacing_and_cooldown_use_recorded_clock) ... ok
+test_t36_later_partial_batch_does_not_withdraw_prior_document (test_refresh.RefreshS07.test_t36_later_partial_batch_does_not_withdraw_prior_document) ... ok
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+test_t24_failure_between_insert_and_publication_rolls_back (test_store.StoreT24.test_t24_failure_between_insert_and_publication_rolls_back) ... ok
+test_t24_records_and_current_view_survive_reopen (test_store.StoreT24.test_t24_records_and_current_view_survive_reopen) ... ok
+test_t05_accepts_complete_saved_response_against_independent_O01 (test_validation.ResponseValidationS03.test_t05_accepts_complete_saved_response_against_independent_O01) ... ok
+test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors (test_validation.ResponseValidationS03.test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors) ... ok
+test_t05_malformed_json_is_an_explicit_error (test_validation.ResponseValidationS03.test_t05_malformed_json_is_an_explicit_error) ... ok
+test_t05_rejects_each_schema_violation_with_the_policy_error_envelope (test_validation.ResponseValidationS03.test_t05_rejects_each_schema_violation_with_the_policy_error_envelope) ... ok
+test_t05_shape_validator_accepts_documented_nullable_types_and_enums (test_validation.ResponseValidationS03.test_t05_shape_validator_accepts_documented_nullable_types_and_enums) ... ok
+test_t05_shape_validator_rejects_each_invalid_schema_boundary (test_validation.ResponseValidationS03.test_t05_shape_validator_rejects_each_invalid_schema_boundary) ... ok
+test_t06_cut_off_interrupted_response_is_not_accepted (test_validation.ResponseValidationS03.test_t06_cut_off_interrupted_response_is_not_accepted) ... ok
+test_t06_decoded_newline_evidence_is_preserved_exactly (test_validation.ResponseValidationS03.test_t06_decoded_newline_evidence_is_preserved_exactly) ... ok
+test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload (test_validation.ResponseValidationS03.test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload) ... ok
+test_t06_incomplete_output_message_is_error_despite_completed_envelope (test_validation.ResponseValidationS03.test_t06_incomplete_output_message_is_error_despite_completed_envelope) ... ok
+test_t06_missing_manager_remains_null_with_its_source_grounded_issue (test_validation.ResponseValidationS03.test_t06_missing_manager_remains_null_with_its_source_grounded_issue) ... ok
+test_t06_missing_or_unsuccessful_completion_metadata_is_rejected (test_validation.ResponseValidationS03.test_t06_missing_or_unsuccessful_completion_metadata_is_rejected) ... ok
+test_t06_non_YYYY_MM_DD_date_strings_are_rejected (test_validation.ResponseValidationS03.test_t06_non_YYYY_MM_DD_date_strings_are_rejected) ... ok
+test_t06_parseable_valid_JSON_cannot_override_incomplete_status (test_validation.ResponseValidationS03.test_t06_parseable_valid_JSON_cannot_override_incomplete_status) ... ok
+test_t06_quotes_must_be_exact_substrings_of_message_not_metadata (test_validation.ResponseValidationS03.test_t06_quotes_must_be_exact_substrings_of_message_not_metadata) ... ok
+test_t06_refusal_is_error_even_when_output_contains_valid_JSON (test_validation.ResponseValidationS03.test_t06_refusal_is_error_even_when_output_contains_valid_JSON) ... ok
+test_t25_completed_record_visible_while_other_response_is_blocked (test_workers.WorkersS06.test_t25_completed_record_visible_while_other_response_is_blocked) ... ok
+test_t26_provider_failure_is_visible_and_other_documents_finish (test_workers.WorkersS06.test_t26_provider_failure_is_visible_and_other_documents_finish) ... ok
+test_t27_expired_claim_is_recorded_and_resumed_from_persisted_source (test_workers.WorkersS06.test_t27_expired_claim_is_recorded_and_resumed_from_persisted_source) ... ok
+test_t28_global_claim_limit_is_shared_between_processes (test_workers.WorkersS06.test_t28_global_claim_limit_is_shared_between_processes) ... ok
+test_t28_overlapping_operator_processes_leave_one_current_result_each (test_workers.WorkersS06.test_t28_overlapping_operator_processes_leave_one_current_result_each) ... ok
+test_t29_old_generation_cannot_overwrite_new_source (test_workers.WorkersS06.test_t29_old_generation_cannot_overwrite_new_source) ... ok
+
+======================================================================
+FAIL: test_t46_400_and_2000_messages_with_two_operator_instances (test_handover.HandoverS11.test_t46_400_and_2000_messages_with_two_operator_instances)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_handover.py", line 21, in test_t46_400_and_2000_messages_with_two_operator_instances
+    self.assertEqual(json.loads(response['output_text'])['request_id'],'LOAD-0001')
+AssertionError: '{{request_id}}' != 'LOAD-0001'
+- {{request_id}}
++ LOAD-0001
+
+
+======================================================================
+FAIL: test_t47_readme_handover_names_supported_setup_and_commands (test_handover.HandoverS11.test_t47_readme_handover_names_supported_setup_and_commands)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_handover.py", line 36, in test_t47_readme_handover_names_supported_setup_and_commands
+    self.assertIn(required,readme)
+AssertionError: 'Python' not found in '# AI Full Stack Challenge — IT Access Requests\n\nThe task is in CHALLENGE.md. Replace this file with your own README, as CHALLENGE.md asks.\n\nIn class, start with `docs/00-prerequisites.md` and follow the files in `docs/` in order.\n'
+
+======================================================================
+FAIL: test_t48_clean_environment_installs_only_hashed_local_wheels (test_handover.HandoverS11.test_t48_clean_environment_installs_only_hashed_local_wheels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_handover.py", line 40, in test_t48_clean_environment_installs_only_hashed_local_wheels
+    lock=ROOT/'requirements.lock';self.assertTrue(lock.is_file())
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 83 tests in 4.274s
+
+FAILED (failures=3)
