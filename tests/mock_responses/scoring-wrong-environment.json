@@ -1,0 +1,67 @@
+[
+  {
+    "document_id": "IT-001.json",
+    "source_sha256": "102a69f8fbc3779ec19fb6c761ad34b0c9a001f845b8df3c808f5a79441fbb10",
+    "response_source": "mock",
+    "configuration": {
+      "provider": "mock",
+      "model": "fixture-v1"
+    },
+    "extraction": {
+      "request_id": "IT-001",
+      "request_date": "2026-10-22",
+      "kind": "new",
+      "requester": "Maya Chen",
+      "team": "Analytics",
+      "system": "Atlas",
+      "environment": "production",
+      "permission": "read",
+      "business_purpose": "I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).",
+      "start_date": "2026-10-23",
+      "end_date": "2026-11-06",
+      "manager": "Priya Shah",
+      "supporting_quotes": [
+        "Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.",
+        "Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?",
+        "My manager is Priya Shah.",
+        "I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle)."
+      ],
+      "issues": []
+    },
+    "error": null,
+    "status": "review",
+    "owner": "System Owner",
+    "next_action": "review-request"
+  },
+  {
+    "document_id": "IT-002.json",
+    "source_sha256": "007e47d1bd662d246e6d3656b6226b1c512ca4d38d71fc5844b9690ee29c14f6",
+    "response_source": "mock",
+    "configuration": {
+      "provider": "mock",
+      "model": "fixture-v1"
+    },
+    "extraction": {
+      "request_id": "IT-002",
+      "request_date": "2026-10-22",
+      "kind": "new",
+      "requester": "Owen Reed",
+      "team": "Payments",
+      "system": "Ledger",
+      "environment": "production",
+      "permission": "write",
+      "start_date": "2026-10-24",
+      "end_date": "2026-10-25",
+      "manager": "Elena Park",
+      "business_purpose": "I'll need to make the corrections at the time of our scheduled maintenance and then check the totals against the settlement report.",
+      "supporting_quotes": [
+        "Request IT-002, 2026-10-22 - Owen Reed in Payments requesting new write access to Ledger in production. Needed during 2026-10-24 and 2026-10-25. My manager is Elena Park.\n\nWe have several settlement entries associated with the wrong reconciliation batch. Operations has prepared the replacement values. I'll need to make the corrections at the time of our scheduled maintenance and then check the totals against the settlement report. I'll be available later to review the changes with the team. It's for this particular cycle of reconciliations, so please make the temporary access during those times."
+      ],
+      "issues": []
+    },
+    "error": null,
+    "status": "review",
+    "owner": "Security Review",
+    "next_action": "review-risk-then-owner"
+  }
+]

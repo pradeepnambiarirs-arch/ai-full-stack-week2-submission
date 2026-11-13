@@ -1,0 +1,47 @@
+[
+  {
+    "document_id": "IT-009.json",
+    "source_sha256": "8aa13b91d4d163827ed609b04c4cf40db2e66e4bbe33cd2211e22c1fa35378ad",
+    "response_source": "mock",
+    "configuration": {
+      "provider": "mock",
+      "model": "fixture-v1"
+    },
+    "extraction": null,
+    "error": "simulated extraction failure",
+    "status": "error",
+    "owner": "IT Service Desk",
+    "next_action": "retry-extraction"
+  },
+  {
+    "document_id": "IT-002.json",
+    "source_sha256": "007e47d1bd662d246e6d3656b6226b1c512ca4d38d71fc5844b9690ee29c14f6",
+    "response_source": "mock",
+    "configuration": {
+      "provider": "mock",
+      "model": "fixture-v1"
+    },
+    "extraction": {
+      "request_id": "IT-002",
+      "request_date": "2026-10-22",
+      "kind": "new",
+      "requester": "Owen Reed",
+      "team": "Payments",
+      "system": "Ledger",
+      "environment": "production",
+      "permission": "write",
+      "start_date": "2026-10-24",
+      "end_date": "2026-10-25",
+      "manager": "Elena Park",
+      "business_purpose": "I'll need to make the corrections at the time of our scheduled maintenance and then check the totals against the settlement report.",
+      "supporting_quotes": [
+        "Request IT-002, 2026-10-22 - Owen Reed in Payments requesting new write access to Ledger in production. Needed during 2026-10-24 and 2026-10-25. My manager is Elena Park.\n\nWe have several settlement entries associated with the wrong reconciliation batch. Operations has prepared the replacement values. I'll need to make the corrections at the time of our scheduled maintenance and then check the totals against the settlement report. I'll be available later to review the changes with the team. It's for this particular cycle of reconciliations, so please make the temporary access during those times."
+      ],
+      "issues": []
+    },
+    "error": null,
+    "status": "review",
+    "owner": "Security Review",
+    "next_action": "review-risk-then-owner"
+  }
+]
