@@ -1,0 +1,17 @@
+{
+  "id": "mock-response-1",
+  "model": "mock-reported-model",
+  "status": "completed",
+  "output": [
+    {
+      "type": "message",
+      "status": "completed",
+      "content": [
+        {
+          "type": "refusal",
+          "refusal": "Simulated refusal"
+        }
+      ]
+    }
+  ]
+}

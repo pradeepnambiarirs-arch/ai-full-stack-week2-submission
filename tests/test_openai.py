@@ -51,3 +51,11 @@ class OpenAIS08(OfflineFixtureTestCase):
         self.assertIn('API_KEY',source);self.assertIn('environ',source)
         provider,_=self.provider('http-completed.json');provider.extract(self.document.message,source_sha256=self.document.source_sha256,configuration=self.configuration)
         self.assertEqual(provider.response_source,'mock')
+
+    def test_t38_raw_refusal_and_incomplete_metadata_cannot_become_success(self):
+        for filename in ['http-refusal.json','http-message-incomplete.json','http-incomplete.json','http-malformed-response.json']:
+            with self.subTest(fixture=filename):
+                provider,_=self.provider(filename)
+                result=process_document(self.document,provider=provider,configuration=self.configuration)
+                self.assertEqual(result['status'],'error');self.assertIsNone(result['extraction'])
+                self.assertEqual(result['next_action'],'retry-extraction')
