@@ -1,0 +1,7 @@
+{
+  "http_status": 429,
+  "headers": {
+    "Retry-After": "2"
+  },
+  "body": "untrusted provider error body"
+}
