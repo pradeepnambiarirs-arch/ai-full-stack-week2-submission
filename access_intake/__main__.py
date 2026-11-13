@@ -31,9 +31,9 @@ def provider_factory():
 def parser():
     main=argparse.ArgumentParser(description='Prepare access requests for human review')
     commands=main.add_subparsers(dest='command',required=True)
-    for name in ('intake','resume','queue','show','history','retry','refresh'):
+    for name in ('intake','resume','queue','show','history','retry','refresh','export','accuracy'):
         command=commands.add_parser(name);command.add_argument('--db',default='var/intake.sqlite')
-        if name in ('intake','resume','retry','refresh'):
+        if name in ('intake','resume','retry','refresh','export','accuracy'):
             command.add_argument('--workers',type=int,default=None);command.add_argument('--rpm',type=float,default=None)
         if name in ('intake','refresh'):
             command.add_argument('--config');command.add_argument('--provider',choices=['mock','openai']);command.add_argument('--mock-manifest');command.add_argument('--policy')
@@ -43,6 +43,9 @@ def parser():
             command.add_argument('--watch',action='store_true');command.add_argument('--interval',type=float,default=1);command.add_argument('--iterations',type=int)
         if name=='retry':
             command.add_argument('--attempt-id',type=int,required=True);command.add_argument('--document-id',required=True);command.add_argument('--force',action='store_true')
+        if name=='export':command.add_argument('--out',default='deliverables')
+        if name=='accuracy':
+            command.add_argument('--actual',required=True);command.add_argument('--expected',required=True);command.add_argument('--out',required=True)
         if name=='refresh':command.add_argument('--force',action='store_true');command.add_argument('--document-id')
     return main
 
@@ -66,7 +69,14 @@ def configuration(args):
     return settings,policy
 
 def run(args):
+    if args.command=='accuracy':
+        from access_intake.accuracy import write_accuracy
+        records=[json.loads(line) for line in Path(args.actual).read_text().splitlines()]
+        emit(write_accuracy(records,args.expected,args.out));return 0
     store=Store(args.db)
+    if args.command=='export':
+        from access_intake.artifacts import export_current
+        emit(export_current(store,args.out));return 0
     if args.command=='queue':
         count=0
         while True:
