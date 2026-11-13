@@ -1,0 +1,72 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7B1DV2AGTC4SWKASJJ82SMD",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "planning/s02-tests-first.txt",
+    "tests/expected/source-facts.json",
+    "tests/inputs/IT-001-followup.json",
+    "tests/inputs/IT-001.200-words.json",
+    "tests/inputs/IT-001.metadata.json",
+    "tests/inputs/IT-001.whitespace.json",
+    "tests/inputs/invalid/invalid-json.json",
+    "tests/inputs/invalid/invalid-utf8.json",
+    "tests/inputs/invalid/missing-message.json",
+    "tests/inputs/invalid/non-string-message.json",
+    "tests/mock_responses/IT-001.200-words.json",
+    "tests/mock_responses/s02-manifest.json",
+    "tests/mock_responses/source-oracles/IT-001.json",
+    "tests/mock_responses/source-oracles/IT-002.json",
+    "tests/mock_responses/source-oracles/IT-003.json",
+    "tests/mock_responses/source-oracles/IT-004.json",
+    "tests/mock_responses/source-oracles/IT-005.json",
+    "tests/mock_responses/source-oracles/IT-006.json",
+    "tests/mock_responses/source-oracles/IT-007.json",
+    "tests/mock_responses/source-oracles/IT-008.json",
+    "tests/mock_responses/source-oracles/IT-009.json",
+    "tests/mock_responses/source-oracles/IT-010.json",
+    "tests/mock_responses/source-oracles/IT-011.json",
+    "tests/mock_responses/source-oracles/IT-012.json",
+    "tests/mock_responses/source-oracles/IT-013.json",
+    "tests/mock_responses/source-oracles/IT-014.json",
+    "tests/mock_responses/source-oracles/IT-015.json",
+    "tests/mock_responses/source-oracles/IT-016.json",
+    "tests/mock_responses/source-oracles/IT-017.json",
+    "tests/mock_responses/source-oracles/IT-018.json",
+    "tests/mock_responses/source-oracles/IT-019.json",
+    "tests/mock_responses/source-oracles/IT-020.json",
+    "tests/test_ingest.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 18529,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 3416576,
+    "output_tokens": 9609,
+    "api_call_count": 13
+  },
+  "redaction": {
+    "replacements": 8,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 10,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
