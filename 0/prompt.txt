@@ -1,0 +1,20 @@
+create specification using the following:  Read CHALLENGE.md, docs/requirements.md, materials/office-policy.md,
+snapshot.schema.json, and the supplied request examples.
+
+Follow docs/01-research-to-spec.md. Write planning/spec.md only;
+do not write application code.
+
+Use a table with columns ID, Requirement, Source, Check:
+- Assign IDs R-01 onward.
+- Make each requirement independently testable.
+- Include the source filename, section, and exact supporting quote.
+- Specify a concrete test, inspection, or command for each requirement.
+- Cover extraction, all five routing rules, processing and recovery,
+  shared operations, required tests, and submission deliverables.
+
+Add an Open questions section. Distinguish documented requirements
+from unresolved questions and proposed implementation choices.
+
+---
+
+did you add ##open question?
