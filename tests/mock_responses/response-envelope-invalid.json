@@ -1,0 +1,48 @@
+{
+  "plan_case": "T05",
+  "cases": [
+    {
+      "name": "null-envelope",
+      "response": null
+    },
+    {
+      "name": "array-envelope",
+      "response": []
+    },
+    {
+      "name": "string-envelope",
+      "response": "not an envelope"
+    },
+    {
+      "name": "missing-output-text",
+      "response": {
+        "response_source": "mock",
+        "status": "completed"
+      }
+    },
+    {
+      "name": "null-output-text",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": null
+      }
+    },
+    {
+      "name": "number-output-text",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": 17
+      }
+    },
+    {
+      "name": "object-output-text",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": {}
+      }
+    }
+  ]
+}

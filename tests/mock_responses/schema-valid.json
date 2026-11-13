@@ -1,0 +1,222 @@
+{
+  "plan_case": "T05",
+  "scope": "Shape only, not factual accuracy or routability.",
+  "cases": [
+    {
+      "name": "complete-O01",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-request_id",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": null, \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-request_date",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": null, \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-kind",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": null, \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-requester",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": null, \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-team",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": null, \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-system",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": null, \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-environment",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": null, \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-permission",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": null, \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-business_purpose",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": null, \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-start_date",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": null, \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-end_date",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": null, \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "nullable-manager",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": null, \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "kind-enum-new",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "kind-enum-change",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"change\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "kind-enum-withdrawal",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"withdrawal\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "kind-enum-other",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"other\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "kind-enum-None",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": null, \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "environment-enum-staging",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "environment-enum-production",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"production\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "environment-enum-None",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": null, \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "permission-enum-read",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "permission-enum-write",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"write\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "permission-enum-admin",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"admin\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "permission-enum-None",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": null, \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": []}"
+      }
+    },
+    {
+      "name": "empty-quote-array",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [], \"issues\": []}"
+      }
+    },
+    {
+      "name": "populated-issue-array",
+      "response": {
+        "response_source": "mock",
+        "status": "completed",
+        "output_text": "{\"request_id\": \"IT-001\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.\", \"Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?\", \"My manager is Priya Shah.\", \"I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).\"], \"issues\": [\"A schema-only string issue.\"]}"
+      }
+    }
+  ]
+}

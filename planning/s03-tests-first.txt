@@ -1,0 +1,174 @@
+S03 / T05–T06 — tests-first run; validation implementation intentionally absent
+UTC: 2026-11-13T18:15:50.128696+00:00
+Base commit: c7fa2198474cf6ebc41030eb471da15894a9377a
+Invocation: env -u API_KEY python3 -m unittest discover -s tests -v
+Expected facts: tests/expected/source-facts.json O01/O02/O09. Shape/completion/error expectations: tests/expected/validation-cases.json, authored from schema and office policy before saving new response fixtures.
+Saved fixtures include 81 invalid-schema cases and 27 valid-shape probes; their subcases cannot execute until the validation module exists. Shape probes do not claim factual extraction accuracy.
+All tests use the saved-fixture offline harness; no network call or credential read. Application source and existing tests/expected facts unchanged.
+
+test_t02_invalid_export_shape_is_rejected_before_provider_use (test_ingest.SourceIngestionS02.test_t02_invalid_export_shape_is_rejected_before_provider_use) ... ok
+test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames (test_ingest.SourceIngestionS02.test_t02_loads_all_twenty_exports_with_original_bytes_and_filenames) ... ok
+test_t02_same_request_id_in_two_filenames_stays_two_documents (test_ingest.SourceIngestionS02.test_t02_same_request_id_in_two_filenames_stays_two_documents) ... ok
+test_t02_whitespace_changes_source_hash_without_changing_message (test_ingest.SourceIngestionS02.test_t02_whitespace_changes_source_hash_without_changing_message) ... ok
+test_t03_metadata_is_retained_for_display_but_not_sent_as_facts (test_ingest.SourceIngestionS02.test_t03_metadata_is_retained_for_display_but_not_sent_as_facts) ... ok
+test_t04_two_hundred_word_message_preserves_the_final_manager_fact (test_ingest.SourceIngestionS02.test_t04_two_hundred_word_message_preserves_the_final_manager_fact) ... ok
+test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply) ... ok
+test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances) ... ok
+test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request) ... ok
+test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id) ... ok
+test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error) ... ok
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+test_t05_accepts_complete_saved_response_against_independent_O01 (test_validation.ResponseValidationS03.test_t05_accepts_complete_saved_response_against_independent_O01) ... ERROR
+test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors (test_validation.ResponseValidationS03.test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors) ... ERROR
+test_t05_malformed_json_is_an_explicit_error (test_validation.ResponseValidationS03.test_t05_malformed_json_is_an_explicit_error) ... ERROR
+test_t05_rejects_each_schema_violation_with_the_policy_error_envelope (test_validation.ResponseValidationS03.test_t05_rejects_each_schema_violation_with_the_policy_error_envelope) ... ERROR
+test_t05_shape_validator_accepts_documented_nullable_types_and_enums (test_validation.ResponseValidationS03.test_t05_shape_validator_accepts_documented_nullable_types_and_enums) ... ERROR
+test_t05_shape_validator_rejects_each_invalid_schema_boundary (test_validation.ResponseValidationS03.test_t05_shape_validator_rejects_each_invalid_schema_boundary) ... ERROR
+test_t06_cut_off_interrupted_response_is_not_accepted (test_validation.ResponseValidationS03.test_t06_cut_off_interrupted_response_is_not_accepted) ... ERROR
+test_t06_decoded_newline_evidence_is_preserved_exactly (test_validation.ResponseValidationS03.test_t06_decoded_newline_evidence_is_preserved_exactly) ... ERROR
+test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload (test_validation.ResponseValidationS03.test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload) ... ERROR
+test_t06_incomplete_output_message_is_error_despite_completed_envelope (test_validation.ResponseValidationS03.test_t06_incomplete_output_message_is_error_despite_completed_envelope) ... ERROR
+test_t06_missing_manager_remains_null_with_its_source_grounded_issue (test_validation.ResponseValidationS03.test_t06_missing_manager_remains_null_with_its_source_grounded_issue) ... ERROR
+test_t06_missing_or_unsuccessful_completion_metadata_is_rejected (test_validation.ResponseValidationS03.test_t06_missing_or_unsuccessful_completion_metadata_is_rejected) ... ERROR
+test_t06_non_YYYY_MM_DD_date_strings_are_rejected (test_validation.ResponseValidationS03.test_t06_non_YYYY_MM_DD_date_strings_are_rejected) ... ERROR
+test_t06_parseable_valid_JSON_cannot_override_incomplete_status (test_validation.ResponseValidationS03.test_t06_parseable_valid_JSON_cannot_override_incomplete_status) ... ERROR
+test_t06_quotes_must_be_exact_substrings_of_message_not_metadata (test_validation.ResponseValidationS03.test_t06_quotes_must_be_exact_substrings_of_message_not_metadata) ... ERROR
+test_t06_refusal_is_error_even_when_output_contains_valid_JSON (test_validation.ResponseValidationS03.test_t06_refusal_is_error_even_when_output_contains_valid_JSON) ... ERROR
+
+======================================================================
+ERROR: test_t05_accepts_complete_saved_response_against_independent_O01 (test_validation.ResponseValidationS03.test_t05_accepts_complete_saved_response_against_independent_O01)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors (test_validation.ResponseValidationS03.test_t05_invalid_envelopes_and_missing_or_nonstring_output_are_errors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t05_malformed_json_is_an_explicit_error (test_validation.ResponseValidationS03.test_t05_malformed_json_is_an_explicit_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t05_rejects_each_schema_violation_with_the_policy_error_envelope (test_validation.ResponseValidationS03.test_t05_rejects_each_schema_violation_with_the_policy_error_envelope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t05_shape_validator_accepts_documented_nullable_types_and_enums (test_validation.ResponseValidationS03.test_t05_shape_validator_accepts_documented_nullable_types_and_enums)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t05_shape_validator_rejects_each_invalid_schema_boundary (test_validation.ResponseValidationS03.test_t05_shape_validator_rejects_each_invalid_schema_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_cut_off_interrupted_response_is_not_accepted (test_validation.ResponseValidationS03.test_t06_cut_off_interrupted_response_is_not_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_decoded_newline_evidence_is_preserved_exactly (test_validation.ResponseValidationS03.test_t06_decoded_newline_evidence_is_preserved_exactly)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload (test_validation.ResponseValidationS03.test_t06_failure_diagnostics_do_not_echo_untrusted_response_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_incomplete_output_message_is_error_despite_completed_envelope (test_validation.ResponseValidationS03.test_t06_incomplete_output_message_is_error_despite_completed_envelope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_missing_manager_remains_null_with_its_source_grounded_issue (test_validation.ResponseValidationS03.test_t06_missing_manager_remains_null_with_its_source_grounded_issue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_missing_or_unsuccessful_completion_metadata_is_rejected (test_validation.ResponseValidationS03.test_t06_missing_or_unsuccessful_completion_metadata_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_non_YYYY_MM_DD_date_strings_are_rejected (test_validation.ResponseValidationS03.test_t06_non_YYYY_MM_DD_date_strings_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_parseable_valid_JSON_cannot_override_incomplete_status (test_validation.ResponseValidationS03.test_t06_parseable_valid_JSON_cannot_override_incomplete_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_quotes_must_be_exact_substrings_of_message_not_metadata (test_validation.ResponseValidationS03.test_t06_quotes_must_be_exact_substrings_of_message_not_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+======================================================================
+ERROR: test_t06_refusal_is_error_even_when_output_contains_valid_JSON (test_validation.ResponseValidationS03.test_t06_refusal_is_error_even_when_output_contains_valid_JSON)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_validation.py", line 31, in setUp
+    from access_intake.validation import (
+ModuleNotFoundError: No module named 'access_intake.validation'
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.078s
+
+FAILED (errors=16)
+
+EXIT STATUS: 1
+STOP: await user review and tests-first commit before implementing S03; no later step attempted.

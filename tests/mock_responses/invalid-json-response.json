@@ -1,0 +1,5 @@
+{
+  "response_source": "mock",
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-001\", SYNTHETIC_INVALID_JSON\n"
+}
