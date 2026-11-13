@@ -131,7 +131,8 @@ class Store:
                 if blocked>now:continue
                 token=row['token']+1
                 db.execute("UPDATE jobs SET state='running',worker=?,token=?,lease_until=? WHERE revision=?",(worker,token,now+lease_seconds,row['id']))
-                if rpm:db.execute('INSERT INTO limits(name,value) VALUES(?,?) ON CONFLICT(name) DO UPDATE SET value=excluded.value',(names[0],now+60/rpm))
+                effective_rpm=rpm or settings.get('rpm',30 if provider!='mock' else 0)
+                if effective_rpm:db.execute('INSERT INTO limits(name,value) VALUES(?,?) ON CONFLICT(name) DO UPDATE SET value=excluded.value',(names[0],now+60/effective_rpm))
                 self._event(db,row['document_id'],row['id'],'claimed')
                 value=dict(row);value.update(token=token,configuration=settings,policy=json.loads(row['policy']));return value
             return None

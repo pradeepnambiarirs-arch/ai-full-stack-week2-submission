@@ -13,7 +13,8 @@ class MockFixtureNotFound(LookupError):
 
 def _configuration_key(configuration: dict) -> str:
     """Match public JSON processing settings independently of key order."""
-    return json.dumps(configuration, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    ignored={'mock_manifest','schema_path','prompt_path','policy_path','workers','rpm','timeout','lease_seconds'}
+    return json.dumps({k:v for k,v in configuration.items() if k not in ignored}, sort_keys=True, separators=(",", ":"), allow_nan=False)
 
 
 class MockProvider:

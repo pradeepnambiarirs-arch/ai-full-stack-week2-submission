@@ -39,4 +39,7 @@ def run_pending(store,provider_factory,*,workers=4,rpm=0,lease_seconds=120,stop_
             store.record_result(job['id'],result,token=job['token'])
     with ThreadPoolExecutor(max_workers=workers) as pool:
         futures=[pool.submit(work) for _ in range(workers)]
-        for future in futures:future.result()
+        try:
+            for future in futures:future.result()
+        except KeyboardInterrupt:
+            stop_event.set();raise
