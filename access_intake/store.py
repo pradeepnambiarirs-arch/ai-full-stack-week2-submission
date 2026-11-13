@@ -123,7 +123,7 @@ class Store:
         now=self.clock()
         with self.connection(True) as db:
             if db.execute("SELECT count(*) FROM jobs WHERE state='running'").fetchone()[0]>=max_inflight:return None
-            candidates=db.execute("SELECT r.*,j.token FROM jobs j JOIN revisions r ON r.id=j.revision JOIN documents d ON d.desired=r.id WHERE j.state='queued' ORDER BY r.id").fetchall()
+            candidates=db.execute("SELECT r.*,j.token FROM jobs j JOIN revisions r ON r.id=j.revision JOIN documents d ON d.desired=r.id WHERE j.state='queued' ORDER BY r.id")
             for row in candidates:
                 settings=json.loads(row['configuration']);provider=settings.get('provider','mock')
                 names=('next_start:'+provider,'cooldown:'+provider)

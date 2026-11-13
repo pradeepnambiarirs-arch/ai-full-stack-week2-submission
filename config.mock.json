@@ -1,0 +1,7 @@
+{
+  "provider": "mock",
+  "model": "fixture-v1",
+  "mock_manifest": "tests/mock_responses/s04-manifest.json",
+  "workers": 4,
+  "rpm": 0
+}

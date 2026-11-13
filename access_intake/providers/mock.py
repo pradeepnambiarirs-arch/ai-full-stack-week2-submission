@@ -32,7 +32,7 @@ class MockProvider:
         if manifest.get("version") != 1:
             raise ValueError("unsupported mock manifest version")
 
-        self._responses: dict[tuple[str, str, int], Path] = {}
+        self._responses: dict[tuple[str, str, int], tuple[Path, dict]] = {}
         for entry in manifest["responses"]:
             key = (
                 entry["source_sha256"],
@@ -44,7 +44,7 @@ class MockProvider:
             response_path = (path.parent / entry["response_file"]).resolve()
             if not response_path.is_relative_to(path.parent):
                 raise ValueError("mock response must be inside the manifest directory")
-            self._responses[key] = response_path
+            self._responses[key] = (response_path, deepcopy(entry.get('parameters', {})))
 
         self._counts: Counter[tuple[str, str]] = Counter()
         self._calls: list[dict] = []
@@ -71,17 +71,21 @@ class MockProvider:
                     "call_index": call_index,
                 }
             )
-            response_path = self._responses.get((*sequence, call_index))
+            registration = self._responses.get((*sequence, call_index))
 
-        if response_path is None:
+        if registration is None:
             raise MockFixtureNotFound(
                 "mock-fixture-not-found: register a response for this source, "
                 "configuration and call index in the mock manifest"
             )
 
+        response_path, parameters = registration
         try:
-            # Reload each envelope; a caller's mutations cannot alter future replies.
-            return json.loads(response_path.read_text(encoding="utf-8"))
+            # Template values are explicit manifest data, never inferred from messages.
+            text = response_path.read_text(encoding="utf-8")
+            for key, value in parameters.items():
+                text = text.replace('{{' + key + '}}', str(value))
+            return json.loads(text)
         except FileNotFoundError:
             raise MockFixtureNotFound(
                 "mock-fixture-not-found: registered response file is missing"
