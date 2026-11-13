@@ -1,0 +1,9 @@
+{
+  "origin": "mock",
+  "configuration": {"provider": "mock", "model": "fixture-v1"},
+  "scope": "simulated report-rendering observations, not actual suite evidence",
+  "events": [
+    {"assertion": "queue owner for O01", "expected": "System Owner", "observed": "Security Review", "passed": false, "phase": "before repair"},
+    {"assertion": "queue owner for O01", "expected": "System Owner", "observed": "System Owner", "passed": true, "phase": "repaired rerun"}
+  ]
+}
