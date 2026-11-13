@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "source_sha256": "d342c355bcf72b2d2c50e5fdf2696403bc245f5e7483722095e92b382a1991b2",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "routing-invalid-schema.json"
+    }
+  ]
+}

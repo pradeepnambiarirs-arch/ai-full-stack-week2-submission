@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "responses": [
+    {
+      "source_sha256": "102a69f8fbc3779ec19fb6c761ad34b0c9a001f845b8df3c808f5a79441fbb10",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-001.complete.json"
+    },
+    {
+      "source_sha256": "007e47d1bd662d246e6d3656b6226b1c512ca4d38d71fc5844b9690ee29c14f6",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-002.complete.json"
+    },
+    {
+      "source_sha256": "80b64509cf82b29006492e97a2c53a165b9df7d22c78da10976a04594f829052",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-003.missing-access.json"
+    },
+    {
+      "source_sha256": "d5de0f00c5c118e499ed27c6f779139b1b4c483158adf5fd2d86f513b1f9654e",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-004.environment-conflict.json"
+    },
+    {
+      "source_sha256": "fb0f1d6451346e0d411204cb82375ae6f3be26e2791996d6adb5550d969c20f1",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-005.withdrawal.json"
+    },
+    {
+      "source_sha256": "d342c355bcf72b2d2c50e5fdf2696403bc245f5e7483722095e92b382a1991b2",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-006.override.json"
+    },
+    {
+      "source_sha256": "dd4857323b83b418755981031c2798cd95c83703d09aa5457e3c8105afba646e",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-007.change.json"
+    },
+    {
+      "source_sha256": "b1e1de4bd67831115149cad2f1caba73f76d0c016bfcd75bdcdefdff8705a66f",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-008.correction.json"
+    },
+    {
+      "source_sha256": "8aa13b91d4d163827ed609b04c4cf40db2e66e4bbe33cd2211e22c1fa35378ad",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-009.missing-manager.json"
+    },
+    {
+      "source_sha256": "8d40a28442575c92e012ea57356a5d39b5a5724dd8e85de65118bffbf269ea2d",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-010.missing-end.json"
+    },
+    {
+      "source_sha256": "0776059292b21c7e12a3c5ecf3e81b3afa9743a4bd5e67e897da9bdd15bab345",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-011.relative-dates.json"
+    },
+    {
+      "source_sha256": "192b72da5e74647b660d0e1226bb6a0f056fca4ec5ec53b278d7863fd397a791",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-012.admin.json"
+    },
+    {
+      "source_sha256": "e477b1b1ecabb5f445dd80703e532a7ac11247220861a09f550f374dcdea240f",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-013.production-read.json"
+    },
+    {
+      "source_sha256": "8f2ce7407f230ea93d334947f9fd577ef7656f5deb25c5d28b62e5930ce592a1",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-014.reversed-dates.json"
+    },
+    {
+      "source_sha256": "a8beef34c01e19d3192a97d81b7a9b1a076703733d842b2eb50b002c6723cd2d",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-015.correction.json"
+    },
+    {
+      "source_sha256": "4c470e6fc498eba6b02efd4fcb9e4550b5e6229c608b20d7ceb2e529cd6282c2",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-016.identifier-mismatch.json"
+    },
+    {
+      "source_sha256": "48c112b2079b488d1c8c52585526957f072df1d7985cf8a2d1a71624c7f08a15",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-017.other.json"
+    },
+    {
+      "source_sha256": "0f4735183084c428b92ba37fc4247b8792222daff9395ab3feb94b866a8de1bd",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "source-oracles/IT-018.json"
+    },
+    {
+      "source_sha256": "a2818ebed37c50392ff66143f0f4ecea0509b40a6d42edff4168770041d8e87d",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-019.change.json"
+    },
+    {
+      "source_sha256": "05c79e5aeea9a964492143fe9e0731e7926ae987bd935482940ffde658a273ab",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-020.manager-conflict.json"
+    },
+    {
+      "source_sha256": "12aa3a2272d7a1062172a70cf6cef2ea91bc1f8d64dd9e1ffcff4980acdbe083",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-021.paraphrase.json"
+    },
+    {
+      "source_sha256": "102a69f8fbc3779ec19fb6c761ad34b0c9a001f845b8df3c808f5a79441fbb10",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 2,
+      "response_file": "IT-001.followup-mismatch.json"
+    },
+    {
+      "source_sha256": "8f938e65706ebbfd09047a88532a698a7b34be7cdabd2194e7d9ce628fa94d41",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-017.null-kind.json"
+    },
+    {
+      "source_sha256": "eb771687eb9458809ad2670219b1043d1fdfb1f0e22466b78e43f8a1baab0dce",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-001.complete.json"
+    },
+    {
+      "source_sha256": "693a1a543446321c6286344ec188441a9be1b213425b513d2029e8edd73d2c82",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-001.200-words.json"
+    },
+    {
+      "source_sha256": "f37fb44dd197263c7f99aa9d7582b150515c2abe687b867eb0d0cd3f7f7d4ffd",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-request_id.json"
+    },
+    {
+      "source_sha256": "652f93599c104b391c2e06808f3a9f3c35faa4bf99f437082ab7142c63fc92a1",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-request_date.json"
+    },
+    {
+      "source_sha256": "efc4d7fb76e3f53bd1e1c6b194247a461013fd1818ba8b7d67304faa62fc9aa9",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-requester.json"
+    },
+    {
+      "source_sha256": "ac3b7ecd0b9eb87d548dc4b4f1c53f8cee9a772742034c862a1eb8017a924929",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-team.json"
+    },
+    {
+      "source_sha256": "b82b1a36d01c6ac44b1d8ccc732aa1a76243ae30d0d8ce90a339c16391aa422d",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-system.json"
+    },
+    {
+      "source_sha256": "e9f4546125dcbec18c1d12ef85ed32c88ad9f8b1463f651e3bfeb794770dd4d5",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-environment.json"
+    },
+    {
+      "source_sha256": "6fce6dec7b6bd3f9030853490a55815f865c847acab187bcdd88f19a94a79719",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-permission.json"
+    },
+    {
+      "source_sha256": "773479dd2d1b16bd241c51912c7e3e83b94ca88127121c0437557551b0d26a85",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-business_purpose.json"
+    },
+    {
+      "source_sha256": "e09a85396a293a592a5328e1d2c0c2c3d56dc5b9d6816464f43e7fb3b1a4c26c",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-start_date.json"
+    },
+    {
+      "source_sha256": "f79b92d5e12af7e44a87d278c1d233b8849b42126ac27416a384a8b3e0fe7927",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-end_date.json"
+    },
+    {
+      "source_sha256": "7e5e9ef1f6abcfa873c864666b71670e86224ce997b69240290452ce138a65ad",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-001-missing-manager.json"
+    },
+    {
+      "source_sha256": "99a6922b7e9c5fcb0e4f5fbad6cc504de4f8a216003095d19ee10a491de7dc9b",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-request_id.json"
+    },
+    {
+      "source_sha256": "29dcedd993bea4f7d822baf03ab74ad862dd9c83f69d728a1ee2490967a4f811",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-request_date.json"
+    },
+    {
+      "source_sha256": "54db982fd639d639a7728b5097b53856fd9cd922c54991d0e9e23103ac62bcb4",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-requester.json"
+    },
+    {
+      "source_sha256": "652efd6e9693604476409a5e4a304c095229eaec996ebb9a51574364a994ccd1",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-team.json"
+    },
+    {
+      "source_sha256": "98ba1230fba94f221f9bbb7d22987f226ac7c17378b9b333e428cfaa1fc20fba",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-system.json"
+    },
+    {
+      "source_sha256": "2a8bcff469c0b012f81e6346b85730da3e00389d4f61c5cba3b13366d9cc53a1",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-environment.json"
+    },
+    {
+      "source_sha256": "974715a8e231e48e63c6e46822a3cde397c5c4b5be1430cc2f03e778ef07dec4",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-permission.json"
+    },
+    {
+      "source_sha256": "c3a4e561c0a668f42a5a10cc8437aec11fe8fed2789511bbbcd0ae1b889d628b",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-business_purpose.json"
+    },
+    {
+      "source_sha256": "46ab4dff2bd543b7d42d10294047fb029072e32dfe88ca72d7e4ae2241e42fbe",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-start_date.json"
+    },
+    {
+      "source_sha256": "4da5f56bfdcbb5b02e721541e38a758227c089bd68c4a571ddd45532022ea5ef",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-end_date.json"
+    },
+    {
+      "source_sha256": "a6dc90881df5ac1f10a2c82029f4ab16756b8073f32f7e4a6cbb2b25f22ed806",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/IT-007-missing-manager.json"
+    },
+    {
+      "source_sha256": "19b3cff3a226eddf44671dbe870bbeec3a73c5feeb6fd8e8c43aca2a02ea0175",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/override-withdrawal.json"
+    },
+    {
+      "source_sha256": "d98e746d719a96782a3b1805d7bb2aa2f1808d1b4628dc168acb1d067ea9c80c",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/withdrawal-missing-request_id.json"
+    },
+    {
+      "source_sha256": "c0f5f032e61dc2c75d6d8697b67909c4313f338b9221df80f972e395d441f27b",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "rule-precedence/withdrawal-missing-request_date.json"
+    }
+  ]
+}

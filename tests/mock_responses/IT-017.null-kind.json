@@ -1,0 +1,5 @@
+{
+  "response_source": "mock",
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-017\", \"request_date\": \"2026-10-22\", \"kind\": null, \"requester\": null, \"team\": null, \"system\": null, \"environment\": null, \"permission\": null, \"business_purpose\": null, \"start_date\": null, \"end_date\": null, \"manager\": null, \"supporting_quotes\": [\"IT-017 submitted on 2026-10-22. I cannot tell whether this is a new request, a change, or a withdrawal.\"], \"issues\": [\"unresolved:kind: not resolved in the source message.\", \"unresolved:requester: not resolved in the source message.\", \"unresolved:team: not resolved in the source message.\", \"unresolved:system: not resolved in the source message.\", \"unresolved:environment: not resolved in the source message.\", \"unresolved:permission: not resolved in the source message.\", \"unresolved:business_purpose: not resolved in the source message.\", \"unresolved:start_date: not resolved in the source message.\", \"unresolved:end_date: not resolved in the source message.\", \"unresolved:manager: not resolved in the source message.\"]}"
+}

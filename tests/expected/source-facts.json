@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "O01\u2013O20 are transcribed from planning/plan.md and original messages/policy before saving replies. S02 checks ingestion and raw fixture payloads; acceptance/routing assertions belong to later steps. No application output is used as an oracle.",
+  "note": "O01\u2013O21 are source-authored plan expectations, saved before corresponding mock replies. Routing comparisons use these values and policy, never application output; saved responses are separate test inputs.",
   "cases": {
     "O01": {
       "input": "materials/requests/IT-001.json",
@@ -1192,6 +1192,59 @@
         "status": "needs-information",
         "owner": "IT Service Desk",
         "next_action": "clarify"
+      }
+    },
+    "O21": {
+      "input": "tests/inputs/IT-021.json",
+      "plan_oracle": "planning/plan.md / O21",
+      "extraction": {
+        "request_id": "IT-021",
+        "request_date": "2026-10-22",
+        "kind": "new",
+        "requester": "Maya Chen",
+        "team": "Analytics",
+        "system": "Atlas",
+        "environment": "staging",
+        "permission": "read",
+        "business_purpose": "I need to check the weekly conversion dashboard against the revised event definitions.",
+        "start_date": "2026-10-23",
+        "end_date": "2026-11-06",
+        "manager": "Priya Shah",
+        "supporting_quotes": [
+          "On 2026-10-22 I, Maya Chen of Analytics, am filing IT-021. Please open a new read-only window on the staging Atlas system, beginning 2026-10-23 and ending 2026-11-06. Priya Shah is my manager. I need to check the weekly conversion dashboard against the revised event definitions."
+        ],
+        "issues": []
+      },
+      "source_evidence": [
+        {
+          "quote": "On 2026-10-22 I, Maya Chen of Analytics, am filing IT-021. Please open a new read-only window on the staging Atlas system, beginning 2026-10-23 and ending 2026-11-06. Priya Shah is my manager. I need to check the weekly conversion dashboard against the revised event definitions.",
+          "fields": [
+            "request_id",
+            "request_date",
+            "kind",
+            "requester",
+            "team",
+            "system",
+            "environment",
+            "permission",
+            "business_purpose",
+            "start_date",
+            "end_date",
+            "manager"
+          ]
+        }
+      ],
+      "policy_evidence": [
+        {
+          "file": "materials/office-policy.md",
+          "section": "Review queue, rule 5",
+          "quote": "Complete staging/read requests go to System Owner with status review and next_action review-request."
+        }
+      ],
+      "expected_route_for_later_steps": {
+        "status": "review",
+        "owner": "System Owner",
+        "next_action": "review-request"
       }
     }
   }

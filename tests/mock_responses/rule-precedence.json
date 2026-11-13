@@ -1,0 +1,130 @@
+{
+  "plan_case": "T22",
+  "cases": [
+    {
+      "name": "IT-001-missing-request_id",
+      "input": "tests/inputs/t22/missing-request_id/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-request_id.json"
+    },
+    {
+      "name": "IT-001-missing-request_date",
+      "input": "tests/inputs/t22/missing-request_date/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-request_date.json"
+    },
+    {
+      "name": "IT-001-missing-requester",
+      "input": "tests/inputs/t22/missing-requester/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-requester.json"
+    },
+    {
+      "name": "IT-001-missing-team",
+      "input": "tests/inputs/t22/missing-team/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-team.json"
+    },
+    {
+      "name": "IT-001-missing-system",
+      "input": "tests/inputs/t22/missing-system/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-system.json"
+    },
+    {
+      "name": "IT-001-missing-environment",
+      "input": "tests/inputs/t22/missing-environment/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-environment.json"
+    },
+    {
+      "name": "IT-001-missing-permission",
+      "input": "tests/inputs/t22/missing-permission/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-permission.json"
+    },
+    {
+      "name": "IT-001-missing-business_purpose",
+      "input": "tests/inputs/t22/missing-business_purpose/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-business_purpose.json"
+    },
+    {
+      "name": "IT-001-missing-start_date",
+      "input": "tests/inputs/t22/missing-start_date/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-start_date.json"
+    },
+    {
+      "name": "IT-001-missing-end_date",
+      "input": "tests/inputs/t22/missing-end_date/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-end_date.json"
+    },
+    {
+      "name": "IT-001-missing-manager",
+      "input": "tests/inputs/t22/missing-manager/IT-001.json",
+      "response_file": "rule-precedence/IT-001-missing-manager.json"
+    },
+    {
+      "name": "IT-007-missing-request_id",
+      "input": "tests/inputs/t22/missing-request_id/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-request_id.json"
+    },
+    {
+      "name": "IT-007-missing-request_date",
+      "input": "tests/inputs/t22/missing-request_date/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-request_date.json"
+    },
+    {
+      "name": "IT-007-missing-requester",
+      "input": "tests/inputs/t22/missing-requester/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-requester.json"
+    },
+    {
+      "name": "IT-007-missing-team",
+      "input": "tests/inputs/t22/missing-team/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-team.json"
+    },
+    {
+      "name": "IT-007-missing-system",
+      "input": "tests/inputs/t22/missing-system/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-system.json"
+    },
+    {
+      "name": "IT-007-missing-environment",
+      "input": "tests/inputs/t22/missing-environment/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-environment.json"
+    },
+    {
+      "name": "IT-007-missing-permission",
+      "input": "tests/inputs/t22/missing-permission/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-permission.json"
+    },
+    {
+      "name": "IT-007-missing-business_purpose",
+      "input": "tests/inputs/t22/missing-business_purpose/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-business_purpose.json"
+    },
+    {
+      "name": "IT-007-missing-start_date",
+      "input": "tests/inputs/t22/missing-start_date/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-start_date.json"
+    },
+    {
+      "name": "IT-007-missing-end_date",
+      "input": "tests/inputs/t22/missing-end_date/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-end_date.json"
+    },
+    {
+      "name": "IT-007-missing-manager",
+      "input": "tests/inputs/t22/missing-manager/IT-007.json",
+      "response_file": "rule-precedence/IT-007-missing-manager.json"
+    },
+    {
+      "name": "override-withdrawal",
+      "input": "tests/inputs/t22/override-withdrawal/IT-005.json",
+      "response_file": "rule-precedence/override-withdrawal.json"
+    },
+    {
+      "name": "withdrawal-missing-request_id",
+      "input": "tests/inputs/t22/withdrawal-missing-request_id/IT-005.json",
+      "response_file": "rule-precedence/withdrawal-missing-request_id.json"
+    },
+    {
+      "name": "withdrawal-missing-request_date",
+      "input": "tests/inputs/t22/withdrawal-missing-request_date/IT-005.json",
+      "response_file": "rule-precedence/withdrawal-missing-request_date.json"
+    }
+  ]
+}
