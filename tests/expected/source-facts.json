@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "note": "S01 contains O01 only; add later case oracles in their owning test-first step. Expected values are authored from message/policy, never read from mock replies or application output.",
+  "cases": {
+    "O01": {
+      "input": "materials/requests/IT-001.json",
+      "plan_oracle": "planning/plan.md / O01",
+      "extraction": {
+        "request_id": "IT-001",
+        "request_date": "2026-10-22",
+        "kind": "new",
+        "requester": "Maya Chen",
+        "team": "Analytics",
+        "system": "Atlas",
+        "environment": "staging",
+        "permission": "read",
+        "business_purpose": "I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).",
+        "start_date": "2026-10-23",
+        "end_date": "2026-11-06",
+        "manager": "Priya Shah",
+        "supporting_quotes": [
+          "Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.",
+          "Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?",
+          "My manager is Priya Shah.",
+          "I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle)."
+        ],
+        "issues": []
+      },
+      "source_evidence": [
+        {
+          "quote": "Maya Chen from Analytics here, with request IT-001 dated 2026-10-22.",
+          "fields": [
+            "request_id",
+            "request_date",
+            "requester",
+            "team"
+          ]
+        },
+        {
+          "quote": "Can I get new read access on Atlas in staging from 2026-10-23 to 2026-11-06?",
+          "fields": [
+            "kind",
+            "permission",
+            "system",
+            "environment",
+            "start_date",
+            "end_date"
+          ]
+        },
+        {
+          "quote": "My manager is Priya Shah.",
+          "fields": [
+            "manager"
+          ]
+        },
+        {
+          "quote": "I'm checking the weekly conversion dashboard with the new event definition changes (before next reporting cycle).",
+          "fields": [
+            "business_purpose"
+          ]
+        }
+      ],
+      "policy_evidence": [
+        {
+          "file": "materials/office-policy.md",
+          "section": "Extracted facts",
+          "quote": "Use explicit facts from each message."
+        },
+        {
+          "file": "materials/office-policy.md",
+          "section": "Input export format",
+          "quote": "Exact supporting quotes refer to substrings of the decoded `message` value."
+        }
+      ],
+      "expected_route_for_later_steps": {
+        "status": "review",
+        "owner": "System Owner",
+        "next_action": "review-request"
+      }
+    }
+  }
+}

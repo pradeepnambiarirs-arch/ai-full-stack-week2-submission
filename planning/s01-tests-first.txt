@@ -1,0 +1,63 @@
+S01 / T01 — tests-first run; application implementation intentionally absent
+UTC: 2026-11-13T17:33:36.409230+00:00
+Base commit: cd9ba43b28fe6ca8ef46b5a871f494520028197d
+Invocation: env -u API_KEY python3 -m unittest discover -s tests -v
+All discovered tests inherit the saved-fixture offline harness; no credential/environment lookup is used by test code.
+Oracle: tests/expected/source-facts.json / O01, independently authored from materials/requests/IT-001.json and office policy.
+
+test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply) ... ERROR
+test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances) ... ERROR
+test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request) ... ERROR
+test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id) ... ERROR
+test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error) ... ERROR
+test_a_mock_reply_is_read_with_no_key_and_no_network (test_starter.MockResponse.test_a_mock_reply_is_read_with_no_key_and_no_network) ... ok
+test_each_request_export_has_message_text_and_a_hash (test_starter.SuppliedFiles.test_each_request_export_has_message_text_and_a_hash) ... ok
+test_the_schema_names_the_fields_it_requires (test_starter.SuppliedFiles.test_the_schema_names_the_fields_it_requires) ... ok
+
+======================================================================
+ERROR: test_t01_exhausted_sequence_does_not_silently_replay_last_reply (test_mock_provider.MockProviderT01.test_t01_exhausted_sequence_does_not_silently_replay_last_reply)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_mock_provider.py", line 28, in setUp
+    from access_intake.providers.mock import MockFixtureNotFound, MockProvider
+ModuleNotFoundError: No module named 'access_intake'
+
+======================================================================
+ERROR: test_t01_manifest_sequence_is_deterministic_between_instances (test_mock_provider.MockProviderT01.test_t01_manifest_sequence_is_deterministic_between_instances)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_mock_provider.py", line 28, in setUp
+    from access_intake.providers.mock import MockFixtureNotFound, MockProvider
+ModuleNotFoundError: No module named 'access_intake'
+
+======================================================================
+ERROR: test_t01_returns_saved_completed_facts_and_logs_request (test_mock_provider.MockProviderT01.test_t01_returns_saved_completed_facts_and_logs_request)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_mock_provider.py", line 28, in setUp
+    from access_intake.providers.mock import MockFixtureNotFound, MockProvider
+ModuleNotFoundError: No module named 'access_intake'
+
+======================================================================
+ERROR: test_t01_unknown_hash_does_not_fall_back_to_same_request_id (test_mock_provider.MockProviderT01.test_t01_unknown_hash_does_not_fall_back_to_same_request_id)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_mock_provider.py", line 28, in setUp
+    from access_intake.providers.mock import MockFixtureNotFound, MockProvider
+ModuleNotFoundError: No module named 'access_intake'
+
+======================================================================
+ERROR: test_t01_unregistered_configuration_has_a_visible_error (test_mock_provider.MockProviderT01.test_t01_unregistered_configuration_has_a_visible_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/ai-full-stack-week2-submission/tests/test_mock_provider.py", line 28, in setUp
+    from access_intake.providers.mock import MockFixtureNotFound, MockProvider
+ModuleNotFoundError: No module named 'access_intake'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.012s
+
+FAILED (errors=5)
+
+EXIT STATUS: 1
+Stop after this run for user review and a test commit; no application implementation or automatic commit.

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "note": "Response paths are relative to this manifest. Entries match the exact original-byte SHA-256, configuration mapping and one-based call index per source/configuration pair. No request-ID fallback or implicit replay on exhaustion.",
+  "responses": [
+    {
+      "source_sha256": "102a69f8fbc3779ec19fb6c761ad34b0c9a001f845b8df3c808f5a79441fbb10",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 1,
+      "response_file": "IT-001.complete.json"
+    },
+    {
+      "source_sha256": "102a69f8fbc3779ec19fb6c761ad34b0c9a001f845b8df3c808f5a79441fbb10",
+      "configuration": {
+        "provider": "mock",
+        "model": "fixture-v1"
+      },
+      "call_index": 2,
+      "response_file": "IT-001.complete.json"
+    }
+  ]
+}
