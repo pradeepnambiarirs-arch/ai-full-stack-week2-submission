@@ -10,5 +10,8 @@
   },
   "1d23dc5e9885fb14993c89814e6d82964ef62947ec815ae54384c3e1f22ca718": {
     "response_file": "IT-001.production.json"
+  },
+  "2326470274ba153459ac80fe6fdabb62a0a88af2128d42f4f9844e985983249f": {
+    "response_file": "IT-002.updated-purpose.json"
   }
 }
